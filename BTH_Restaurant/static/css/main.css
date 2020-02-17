@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: black;
+    height: auto;
+}
+
+.top-header {
+    background-color: black;
+    height: auto;
+}
+
+.first-ul li a {
+    background-color: transparent;
+    color: blanchedalmond;
+}
+
+.first-ul li a:hover {
+    background-color: transparent;
+}
+
+.shoping-cart {
+    margin: 2vh 0;
+    color: blanchedalmond;
+}
+
+.shoping-cart a {
+    color: tomato;
+}
+
+.main-logo {
+    text-align: center;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.main-navigation-bar {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+.navbar-style {
+    text-transform: uppercase;
+}
+
+.logo {
+    height: 200px;
+}
+
+.main-menu li a {
+    color: black;
+    font-size: 1.5em;
+}
+
+.main-menu li a:hover {
+    background: black;
+    color: blanchedalmond;
+
+}
+
+.icon-bar {
+    background: black;
+}
+
+.main-menu {
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+}
+
+#micon {
+    text-align: center;
+}
+
+/*-- Slider --*/
+
+.image-slider {
+    margin: 0;
+    padding: 0;
+}
+
+#slider {
+    overflow: hidden;
+}
+
+.slider-caption {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    margin-top: 160px;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.slider-caption h1 {
+    text-shadow: 1px 1px #777;
+    font-size: 48px;
+    padding-bottom: 10px;
+    font-weight: 500;
+    color: #f78e21;
+    text-transform: uppercase;
+}
+
+.slider-caption p {
+    font-size: 18px;
+    font-weight: 300;
+    color: #fff;
+    line-height: 15px;
+}
+
+.slider-caption a {
+    margin-top: 20px;
+    text-decoration: none;
+    display: inline-block;
+    background-color: #f78e21;
+    width: 200px;
+    height: 40px;
+    text-align: center;
+    color: #fff;
+    line-height: 40px;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/*-- End Slider --*/
