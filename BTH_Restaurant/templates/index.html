@@ -1,6 +1,7 @@
-{% extends "header.html" %}
+{% extends "common.html" %}
 
 {% block content %}
+{% include "header.html" %}
 {% include "imageslider.html" %}
 <ul>
     <li>
@@ -10,4 +11,5 @@
         list 02
     </li>
 </ul>
+{% include "footer.html" %}
 {% endblock %}

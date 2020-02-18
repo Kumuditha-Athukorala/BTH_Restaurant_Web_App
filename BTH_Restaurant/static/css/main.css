@@ -1,82 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
-.header {
-    background-color: black;
-    height: auto;
-}
-
-.top-header {
-    background-color: black;
-    height: auto;
-}
-
-.first-ul li a {
-    background-color: transparent;
-    color: blanchedalmond;
-}
-
-.first-ul li a:hover {
-    background-color: transparent;
-}
-
-.shoping-cart {
-    margin: 2vh 0;
-    color: blanchedalmond;
-}
-
-.shoping-cart a {
-    color: tomato;
-}
-
-.main-logo {
-    text-align: center;
-    background-color: white;
-    margin: 0;
-    padding: 0;
-}
-
-.main-navigation-bar {
-    margin: 0;
-    padding: 0;
-    background-color: white;
-}
-
-.navbar-style {
-    text-transform: uppercase;
-}
-
-.logo {
-    height: 200px;
-}
-
-.main-menu li a {
-    color: black;
-    font-size: 1.5em;
-}
-
-.main-menu li a:hover {
-    background: black;
-    color: blanchedalmond;
-
-}
-
-.icon-bar {
-    background: black;
-}
-
-.main-menu {
-    display: inline-block;
-    float: none;
-    vertical-align: top;
-}
-
-#micon {
-    text-align: center;
-}
-
 /*-- Slider --*/
 
 .image-slider {
@@ -129,3 +50,7 @@
 }
 
 /*-- End Slider --*/
+
+/*-- Login Page --*/
+
+/*-- Login Page --*/
