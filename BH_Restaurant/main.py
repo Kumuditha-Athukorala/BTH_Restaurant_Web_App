@@ -7,8 +7,12 @@ def index():
     return render_template('index.html')
 
 @app.route('/login')
-def indexLogin():
+def login():
     return render_template('login.html')
+
+@app.route('/user_registration')
+def register():
+    return render_template('user_registration.html')
 
 if __name__ == '__main__':
 	app.run()
