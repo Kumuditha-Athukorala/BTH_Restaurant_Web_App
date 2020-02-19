@@ -1,3 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.main-navigation-bar {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+.navbar-style {
+    text-transform: uppercase;
+}
+
+.logo {
+    height: 200px;
+}
+
+.main-menu li a {
+    color: black;
+    font-size: 1.5em;
+}
+
+.main-menu li a:hover {
+    background: black;
+    color: blanchedalmond;
+
+}
+
+.icon-bar {
+    background: black;
+}
+
+.main-menu {
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+}
+
+#micon {
+    text-align: center;
+}
+
+.main-logo {
+    text-align: center;
+}
+
+.logo {
+    width: 100px;
+    height: 150px;
+}
+
 /*-- Slider --*/
 
 .image-slider {
