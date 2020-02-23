@@ -1,6 +1,6 @@
 function checkCustomerRegistration() {
 
-    alert("customer");
+    document.getElementById("register-message").innerHTML = "";
     var fname = document.getElementById("fname").value;
     var lname = document.getElementById("lname").value;
     var gender = document.getElementById("sel1").value;
@@ -31,7 +31,7 @@ function checkCustomerRegistration() {
             "address": address,
             "email": email,
             "password": password,
-            "confirmpassword": conpswd,
+            "conpassword": conpswd
         }
         // var lgdata = JSON.stringify(regiseterData);
         $.ajax({
@@ -39,7 +39,7 @@ function checkCustomerRegistration() {
             url: "/register",
             data: regiseterData,
             success: function (result) {
-
+                alert(result);
             }
         });
 
