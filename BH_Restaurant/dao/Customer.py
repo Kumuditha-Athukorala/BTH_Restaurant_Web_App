@@ -21,3 +21,22 @@ class Customer:
         print(result)
 
         return result
+
+    def saveCustomer(self,data):
+
+        firstName = data.get('firstName')
+        lastname = data.get('lastName')
+        gender = data.get('gender')
+        phone = data.get('phone')
+        address = data.get('address')
+        email = data.get('email')
+        password = data.get('password')
+
+        cursor = database.getDatabaseConnection()
+        sqlQuery = "INSERT INTO customer (first_name,last_name,gender,contact_number,address,email_address,password) VALUES (%s, %s, %s, %s, %s, %s, %s )"
+        recordTuple = (firstName,lastname,gender,phone,address,email,password)
+
+        cursor.execute(sqlQuery,recordTuple)
+        result = database.commitDatabaseConnection().commit()
+        print(result)
+        return result

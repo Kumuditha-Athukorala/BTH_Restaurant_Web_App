@@ -10,3 +10,8 @@ class CustomerService:
             return 1
         else:
             return 0
+
+    def rgisterCustomer(self,data):
+        result = customer.saveCustomer(data)
+        print(result)
+        return result

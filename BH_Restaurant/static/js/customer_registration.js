@@ -19,6 +19,9 @@ function checkCustomerRegistration() {
         document.getElementById("register-message").innerHTML = "Please Fill All the Details...!";
         return false;
 
+    } else if (password.length <= 8) {
+        document.getElementById("register-message").innerHTML = "Password must be 8 characters long...!";
+        return false;
     } else if (password != conpswd) {
         document.getElementById("register-message").innerHTML = "Passwords are not mactching...!";
         return false;
@@ -36,13 +39,34 @@ function checkCustomerRegistration() {
         // var lgdata = JSON.stringify(regiseterData);
         $.ajax({
             type: "POST",
-            url: "/register",
+            url: "/checkEmail",
             data: regiseterData,
             success: function (result) {
-                alert(result);
+                if (result == 0) {
+                    alert('before')
+                    registerCustomer(regiseterData);
+                } else {
+                    document.getElementById("register-message").innerHTML = "Email is already existed...!";
+                }
+
             }
         });
 
+    }
+
+    function registerCustomer(regiseterData) {
+        alert("2222")
+        $.ajax({
+            type: "POST",
+            url: "/registerCustomer",
+            data: regiseterData
+        });
+
+    }
+
+
+    function cancelRegisterForm() {
+        window.location.href = "/";
     }
 
 }

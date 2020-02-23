@@ -13,4 +13,11 @@ class Database:
            cursor = self.connection.cursor()
            return cursor;
         except:
-            ("Database Connection Error..!")
+            print("Database Connection Error..!")
+
+    def commitDatabaseConnection(self):
+        try:
+            return self.connection
+        except:
+            print("Database Connection Error..!")
+
