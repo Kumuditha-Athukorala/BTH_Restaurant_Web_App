@@ -7,11 +7,9 @@ function checkLoginForm() {
 
 
   if (uname == "" || pswd == "" || uname == null || pswd == null) {
-    alert("if");
     document.getElementById("login-message").innerHTML = "Please Enter the User Login Credentials...!";
     return false;
   } else {
-
     loginData = {
       "username": uname,
       "password": pswd
@@ -25,12 +23,15 @@ function checkLoginForm() {
         if (result == 1) {
           window.location.href = '/';
         } else {
-
           document.getElementById("login-message").innerHTML = "Invalied Login Credentials...!";
         }
 
       }
     });
-
   }
+}
+
+function cancelLoginForm() {
+
+  window.location.href = "/";
 }

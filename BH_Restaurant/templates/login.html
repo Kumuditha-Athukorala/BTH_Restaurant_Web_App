@@ -8,7 +8,7 @@
     <div class="col-sm-4"></div>
     <div class="col-sm-4">
         <h2 style="text-align: center;">User Login</h2>
-        <form method="POST" action="">
+        <form method="POST">
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
@@ -18,12 +18,12 @@
                 <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
             </div>
             <div class="message">
-                <label id="login-message"></label>
+                <label id="login-message" style="color: red;"></label>
             </div>
 
 
             <button type="button" class="btn btn-primary" onclick="return checkLoginForm();">Login</button>
-            <button type="cancel" class="btn btn-alert">Cancel</button>
+            <button type="button" class="btn btn-danger" onclick="cancelLoginForm();">Cancel</button>
         </form>
     </div>
     <div class="col-sm-4"></div>

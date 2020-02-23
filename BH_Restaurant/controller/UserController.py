@@ -3,9 +3,9 @@ from flask import *
 from app import app
 from service.UserService import UserService
 
-@app.route('/user_registration')
+@app.route('/customer_registration')
 def register():
-    return render_template('user_registration.html')
+    return render_template('customer_registration.html')
 
 @app.route('/registration', methods=['GET','POST'])
 def userRegister():
