@@ -19,6 +19,9 @@ function checkCustomerRegistration() {
         document.getElementById("register-message").innerHTML = "Please Fill All the Details...!";
         return false;
 
+    } else if (password != conpswd) {
+        document.getElementById("register-message").innerHTML = "Passwords are not mactching...!";
+        return false;
     } else {
         regiseterData = {
             "firstName": fname,
@@ -33,7 +36,7 @@ function checkCustomerRegistration() {
         // var lgdata = JSON.stringify(regiseterData);
         $.ajax({
             type: "POST",
-            url: "/registerCustomer",
+            url: "/register",
             data: regiseterData,
             success: function (result) {
 
