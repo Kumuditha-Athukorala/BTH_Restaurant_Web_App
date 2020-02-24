@@ -12,24 +12,44 @@ class User:
         self.password=""
 
     def getAllCustomers(self):
-        database = Database()
-        cursor = database.getDatabaseConnection()
-        cursor.execute("SELECT * FROM customer")
-        resultSet = cursor.fetchall()
-        cursor.close()
-        return resultSet
+
+        try:
+            database = Database()
+            cursor = database.getDatabaseConnection()
+            cursor.execute("SELECT * FROM customer")
+            resultSet = cursor.fetchall()
+            cursor.close()
+            return resultSet
+
+        except:
+            print("Database Error...!")
+
+        finally:
+            cursor.close()
 
     def checkUserLogin(self,data):
-        database = Database()
-        cursor = database.getDatabaseConnection()
 
-        uname = data.get('username')
+        try:
+            database = Database()
+            cursor = database.getDatabaseConnection()
 
-        print(uname)
-        print(type(uname))
+            uname = data.get('username')
+            pswd  = data.get('password')
 
-        sql_query = "SELECT * FROM customer WHERE email_address=%s"
-        cursor.execute(sql_query,uname)
-        result = cursor.fetchall()
-        print(result)
-        return result
+            print(uname)
+            print(type(uname))
+
+            sql_query = "SELECT * FROM customer WHERE email_address = %s and password = %s"
+            cursor.execute(sql_query,(uname,pswd,))
+            result = cursor.fetchall()
+
+            print(result)
+            return result
+
+        except:
+            print("Database Error...!")
+
+        finally:
+            cursor.close()
+
+

@@ -64,9 +64,9 @@ function checkCustomerRegistration() {
 
     }
 
+}
 
-    function cancelRegisterForm() {
-        window.location.href = "/";
-    }
-
+function cancelRegisterForm() {
+    alert("cancle");
+    window.location.href = "/";
 }
