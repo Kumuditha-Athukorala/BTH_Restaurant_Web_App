@@ -21,7 +21,8 @@ function checkLoginForm() {
       data: loginData,
       success: function (result) {
         if (result == 1) {
-          window.location.href = '/';
+          // myprofile();
+          window.location.href = "/profile";
         } else {
           document.getElementById("login-message").innerHTML = "Invalied Login Credentials...!";
         }
@@ -32,6 +33,12 @@ function checkLoginForm() {
 }
 
 function cancelLoginForm() {
-
   window.location.href = "/";
+}
+
+function myprofile() {
+  $.ajax({
+    type: "POST",
+    url: "/myprofile"
+  });
 }

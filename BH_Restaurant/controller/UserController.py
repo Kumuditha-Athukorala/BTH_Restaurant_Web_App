@@ -3,13 +3,13 @@ from flask import *
 from app import app
 from service.UserService import UserService
 
-@app.route('/login', methods=['GET'])
+@app.route('/login', methods=['GET','POST'])
 def login():
     return render_template('login.html')
 
 @app.route('/checklogin', methods=['POST'])
 def checkUserLogin():
-
+    session.pop('user', None)
     postData = request.form
     print(postData)
 
@@ -19,16 +19,10 @@ def checkUserLogin():
 
     return str(result)
 
-
-
-
-
-
-
-
-
-
-
-
-
+@app.route('/profile')
+def profile():
+    if session.get("user") is None:
+        return render_template('login.html')
+    else:
+        return render_template('profile.html')
 

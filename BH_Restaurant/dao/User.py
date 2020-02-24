@@ -43,7 +43,6 @@ class User:
             cursor.execute(sql_query,(uname,pswd,))
             result = cursor.fetchall()
 
-            print(result)
             return result
 
         except:
