@@ -15,6 +15,7 @@ function checkTableBookingForm() {
     var comment = document.getElementById("comment").value;
 
     console.log(fname, lname, phone, email, adult, children, book_date, book_time, comment);
+    console.log(book_date);
 
     if (fname == null || fname == "" || lname == null || lname == "" || phone == null || phone == "" ||
         email == null || email == "" || adult == null || adult == "" || children == null || children == "" ||
@@ -40,9 +41,55 @@ function checkTableBookingForm() {
     } else if (children < 0 || children > 20) {
         document.getElementById("booking-message").innerHTML = "Chidren head Count must be in between 0-20 ...!";
         return false;
+    } else if (!checkDate(book_date)) {
+
+        document.getElementById("booking-message").innerHTML = "Selected Date is invalied...!";
+        return false;
+
+    } else if (!checkBookingTime(book_time)) {
+
+        document.getElementById("booking-message").innerHTML = "Please Select a proper booking date-time slot...!";
+        return false;
     }
 
 }
+
+function checkDate(bookdate) {
+
+    var selectedDate = new Date(bookdate);
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
+    if (selectedDate >= today) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function checkBookingTime(time) {
+    var today = new Date();
+    var current_hour = today.getHours();
+    var current_hour_12 = current_hour - 12;
+
+    var booking_date = document.getElementById("book_date").value;
+    var selected_date = new Date(booking_date);
+    today.setHours(0, 0, 0, 0);
+
+    if (selected_date == today) {
+        if (time == current_hour_12 || time < current_hour_12) {
+            alert("timeeeee");
+            return false;
+        } else {
+            return true;
+        }
+    } else if (selected_date > today) {
+        return true;
+    } else {
+        return false;
+    }
+
+}
+
 
 function validatePhoneNumber(phone) {
     var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
