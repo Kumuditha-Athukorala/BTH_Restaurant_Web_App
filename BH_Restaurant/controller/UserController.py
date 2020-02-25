@@ -1,4 +1,3 @@
-
 from flask import *
 from app import app
 from service.UserService import UserService
@@ -26,3 +25,7 @@ def profile():
     else:
         return render_template('profile.html')
 
+@app.route('/logout')
+def logout():
+    session.pop('user',None)
+    return render_template('index.html')

@@ -53,16 +53,23 @@ function checkCustomerRegistration() {
         });
 
     }
+}
 
-    function registerCustomer(regiseterData) {
-        alert("2222")
-        $.ajax({
-            type: "POST",
-            url: "/registerCustomer",
-            data: regiseterData
-        });
+function registerCustomer(regiseterData) {
+    alert("2222")
+    $.ajax({
+        type: "POST",
+        url: "/registerCustomer",
+        data: regiseterData,
+        success: function (result) {
 
-    }
+            if (result == 'None') {
+                alert("You Have Successfully Registerd...!!!");
+                window.location.href = "/";
+            }
+
+        }
+    });
 
 }
 

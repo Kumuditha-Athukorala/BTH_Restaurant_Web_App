@@ -10,10 +10,19 @@
         </div>
         <ul class="nav navbar-nav" id="myNavbar">
             <li><a href="#">Home</a></li>
-            <li><a href="#">Account</a></li>
+            <li><a href="/profile">Account</a></li>
+            {% if session.get("user") !=  session['user']  %}
             <li><a href="customer_registration">Sign up</a></li>
             <li><a href="login">LogIn</a></li>
+            {% endif %}
         </ul>
+        {% if session.get("user") ==  session['user']  %}
+        <ul class="nav navbar-nav navbar-right">
+            <li><a>Hello {{session['user']}} </a></li>
+            <li><a href="/profile">My Bookings</a></li>
+            <li><a href="logout"> Logout</a></li>
+        </ul>
+        {% endif %}
     </div>
 
 </nav>
