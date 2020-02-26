@@ -1,13 +1,18 @@
-<html>
+{% extends "common.html" %}
 
-<head>
-
-</head>
-
-<body>
-    <h1> Profile Page {{ session["user"] }} </h1>
-
-</body>
+{% block content %}
+{% include "header.html" %}
+{% include "banner.html" %}
 
 
-</html>
+
+<div class="row" style="margin: 0; padding: 0;" xmlns="">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <h2 style="text-align: center;">Profile - {{ session["user"] }}</h2>
+
+    </div>
+    <div class="col-sm-4"> </div>
+</div>
+
+{% endblock %}
