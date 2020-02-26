@@ -19,11 +19,26 @@ function checkCustomerRegistration() {
         document.getElementById("register-message").innerHTML = "Please Fill All the Details...!";
         return false;
 
-    } else if (password.length <= 8) {
-        document.getElementById("register-message").innerHTML = "Password must be 8 characters long...!";
+    } else if (fname.length > 25) {
+        document.getElementById("register-message").innerHTML = "First name is too long...!";
+        return false;
+    } else if (lname.length > 25) {
+        document.getElementById("register-message").innerHTML = "Last name is too long...!";
+        return false;
+    } else if (address.length > 250) {
+        document.getElementById("register-message").innerHTML = "Address is too long...!";
+        return false;
+    } else if (!validatePhoneNumber(phone)) {
+        document.getElementById("register-message").innerHTML = "Invalied Phone Number...!";
+        return false;
+    } else if (!validateEmail(email)) {
+        document.getElementById("register-message").innerHTML = "Invalied Email Address...!";
+        return false;
+    } else if (password.length <= 7 || password.length >= 17) {
+        document.getElementById("register-message").innerHTML = "Password must be 8-16 characters long...!";
         return false;
     } else if (password != conpswd) {
-        document.getElementById("register-message").innerHTML = "Passwords are not mactching...!";
+        document.getElementById("register-message").innerHTML = "Passwords are not matching...!";
         return false;
     } else {
         regiseterData = {
@@ -71,6 +86,22 @@ function registerCustomer(regiseterData) {
         }
     });
 
+}
+
+function validatePhoneNumber(phone) {
+    var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+    if (phoneno.test(phone)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function validateEmail(mail) {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+        return true;
+    }
+    return false;
 }
 
 function cancelRegisterForm() {
