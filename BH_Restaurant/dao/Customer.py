@@ -10,13 +10,14 @@ class Customer:
         self.address=""
         self.emailaddress=""
         self.password=""
+        self.status = ""
 
     def getEmailAddress(self,data):
 
         try:
             enterdEmail = data.get('email')
             cursor = database.getDatabaseConnection()
-            sqlQuery = "SELECT email_address FROM customer WHERE email_address=%s"
+            sqlQuery = "SELECT email_address FROM user WHERE email_address=%s"
             cursor.execute(sqlQuery, enterdEmail)
             result = cursor.fetchall()
             print(result)
@@ -38,10 +39,11 @@ class Customer:
             address = data.get('address')
             email = data.get('email')
             password = data.get('password')
+            status = "1"
 
             cursor = database.getDatabaseConnection()
-            sqlQuery = "INSERT INTO customer (first_name,last_name,gender,contact_number,address,email_address,password) VALUES (%s, %s, %s, %s, %s, %s, %s )"
-            recordTuple = (firstName, lastname, gender, phone, address, email, password)
+            sqlQuery = "INSERT INTO user (first_name,last_name,gender,contact_number,address,email_address,password,status) VALUES (%s, %s, %s, %s, %s, %s, %s, %s )"
+            recordTuple = (firstName, lastname, gender, phone, address, email, password, status)
 
             cursor.execute(sqlQuery, recordTuple)
             result = database.commitDatabaseConnection().commit()

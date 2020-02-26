@@ -50,6 +50,8 @@ function checkTableBookingForm() {
 
         document.getElementById("booking-message").innerHTML = "Please Select a proper booking date-time slot...!";
         return false;
+    } else {
+        //Ajax call here.
     }
 
 }
@@ -75,17 +77,20 @@ function checkBookingTime(time) {
     var selected_date = new Date(booking_date);
     today.setHours(0, 0, 0, 0);
 
-    if (selected_date == today) {
+    if (selected_date < today) {
+        alert("one");
+        return false;
+    } else if (selected_date > today) {
+        alert("two");
+        return true;
+    } else {
+        alert("sameeeee");
         if (time == current_hour_12 || time < current_hour_12) {
             alert("timeeeee");
             return false;
         } else {
             return true;
         }
-    } else if (selected_date > today) {
-        return true;
-    } else {
-        return false;
     }
 
 }

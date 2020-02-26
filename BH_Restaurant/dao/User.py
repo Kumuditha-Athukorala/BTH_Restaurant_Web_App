@@ -10,13 +10,14 @@ class User:
         self.address=""
         self.emailaddress=""
         self.password=""
+        self.status = 0
 
     def getAllCustomers(self):
 
         try:
             database = Database()
             cursor = database.getDatabaseConnection()
-            cursor.execute("SELECT * FROM customer")
+            cursor.execute("SELECT * FROM user")
             resultSet = cursor.fetchall()
             cursor.close()
             return resultSet
@@ -35,12 +36,13 @@ class User:
 
             uname = data.get('username')
             pswd  = data.get('password')
+            status = '1'
 
             print(uname)
             print(type(uname))
 
-            sql_query = "SELECT * FROM customer WHERE email_address = %s and password = %s"
-            cursor.execute(sql_query,(uname,pswd,))
+            sql_query = "SELECT * FROM user WHERE email_address = %s and password = %s and status =%s"
+            cursor.execute(sql_query,(uname,pswd,status,))
             result = cursor.fetchall()
 
             return result
