@@ -13,16 +13,29 @@
             <li><a href="/profile">Account</a></li>
             {% if session.get("user") !=  session['user']  %}
             <li><a href="customer_registration">Sign up</a></li>
-            <li><a href="login">LogIn</a></li>
+            <li><a href="/login">LogIn</a></li>
             {% endif %}
         </ul>
-        {% if session.get("user") ==  session['user']  %}
+        {% if session.get("user") ==  session['user'] %}
+        {% if session.get("user") != "Kuma" %}
         <ul class="nav navbar-nav navbar-right">
             <li><a>Hello {{session['user']}} </a></li>
             <li><a href="/profile">My Bookings</a></li>
-            <li><a href="logout"> Logout</a></li>
+            <li><a href="/logout"> Logout</a></li>
         </ul>
         {% endif %}
+        {% endif %}
+
+
+        {% if session.get("user") == "Kuma"  %}
+        <ul class="nav navbar-nav navbar-right">
+            <li><a>Admin-{{session['user']}} </a></li>
+            <li><a href="/adminpanel"> Admin Panel</a></li>
+            <li><a href="/logout"> Logout</a></li>
+        </ul>
+        {% endif %}
+
+
     </div>
 
 </nav>
