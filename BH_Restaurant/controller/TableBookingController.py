@@ -1,6 +1,8 @@
 from flask import *
 from app import app
+from service.TableBookingService import TableBookingService
 
+tableBookingService = TableBookingService()
 
 @app.route('/booktable')
 def tableBooking():
@@ -9,8 +11,11 @@ def tableBooking():
 
 @app.route('/booking',methods=['POST'])
 def booking():
-    print('register')
+    print('booking')
     postData = request.form
     print(postData)
 
-    return '1'
+    result = tableBookingService.saveTableBookingRecord(postData)
+    print(result)
+
+    return str(result)

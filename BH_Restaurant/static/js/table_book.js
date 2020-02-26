@@ -52,6 +52,33 @@ function checkTableBookingForm() {
         return false;
     } else {
         //Ajax call here.
+        alert("Ajax");
+        bookingData = {
+            "firstName": fname,
+            "lastName": lname,
+            "phone": phone,
+            "email": email,
+            "adult": adult,
+            "children": children,
+            "booking_date": book_date,
+            "booking_time": book_time,
+            "comment": comment
+        }
+        // var lgdata = JSON.stringify(regiseterData);
+        $.ajax({
+            type: "POST",
+            url: "/booking",
+            data: bookingData,
+            success: function (result) {
+                alert("booking..!!");
+                if (result == 'None') {
+                    alert("You Have Successfully Book A Table...!!!");
+                    window.location.href = "/";
+                } else {
+                    document.getElementById("booking-message").innerHTML = "Please enter the registered Email...!";
+                }
+            }
+        });
     }
 
 }
