@@ -9,6 +9,12 @@ function checkLoginForm() {
   if (uname == "" || pswd == "" || uname == null || pswd == null) {
     document.getElementById("login-message").innerHTML = "Please Enter the User Login Credentials...!";
     return false;
+  } else if (!validateEmail(uname)) {
+    document.getElementById("login-message").innerHTML = "Invalied Email Address...!";
+    return false;
+  } else if (pswd.length <= 7 || pswd.length >= 17) {
+    document.getElementById("login-message").innerHTML = "Password must be 8-16 characters long...!";
+    return false;
   } else {
     loginData = {
       "username": uname,
@@ -34,6 +40,14 @@ function checkLoginForm() {
 
 function cancelLoginForm() {
   window.location.href = "/";
+}
+
+
+function validateEmail(mail) {
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+    return true;
+  }
+  return false;
 }
 
 function myprofile() {
