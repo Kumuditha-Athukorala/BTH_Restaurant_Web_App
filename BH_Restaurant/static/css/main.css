@@ -104,5 +104,15 @@
 
 /*-- End Slider --*/
 
-/*-- Login Page --*/
-/*-- Login Page --*/
+/*-- Admin Page --*/
+
+#panel_button_column {
+
+    background-color: red;
+}
+
+.panel_row {
+    background-color: red;
+}
+
+/*-- Admin Page --*/

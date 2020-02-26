@@ -19,7 +19,7 @@ class User:
             cursor = database.getDatabaseConnection()
             cursor.execute("SELECT * FROM user")
             resultSet = cursor.fetchall()
-            cursor.close()
+
             return resultSet
 
         except:

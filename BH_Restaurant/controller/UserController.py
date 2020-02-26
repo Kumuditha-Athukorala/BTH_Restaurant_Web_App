@@ -2,6 +2,8 @@ from flask import *
 from app import app
 from service.UserService import UserService
 
+userService = UserService()
+
 @app.route('/login', methods=['GET','POST'])
 def login():
     if session.get("user") is None:
@@ -16,7 +18,7 @@ def checkUserLogin():
     postData = request.form
     print(postData)
 
-    userService = UserService()
+
     result = userService.checkUserLogin(postData)
     print(result)
 

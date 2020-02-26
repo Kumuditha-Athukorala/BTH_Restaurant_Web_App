@@ -13,3 +13,8 @@ class UserService:
             return 1
         else:
             return 0
+
+
+    def allCustomers(self):
+        result = user.getAllCustomers()
+        return result
