@@ -104,15 +104,20 @@
 
 /*-- End Slider --*/
 
-/*-- Admin Page --*/
+/*-- Footer --*/
+.footer {
+    background-color: black;
+    height: 60px;
 
-#panel_button_column {
-
-    background-color: red;
 }
 
-.panel_row {
-    background-color: red;
+.f_container {
+    text-align: center;
+
 }
 
-/*-- Admin Page --*/
+.f_para {
+    margin-top: 20px;
+}
+
+/*-- Footer --*/
