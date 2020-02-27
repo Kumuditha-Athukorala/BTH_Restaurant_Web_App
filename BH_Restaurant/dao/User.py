@@ -1,3 +1,4 @@
+import pymysql
 from database import Database
 
 
@@ -16,10 +17,11 @@ class User:
 
         try:
             database = Database()
-            cursor = database.getDatabaseConnection()
+            conn = database.commitDatabaseConnection()
+            cursor = conn.cursor(pymysql.cursors.DictCursor)
             cursor.execute("SELECT * FROM user")
             resultSet = cursor.fetchall()
-
+            print(type(resultSet))
             return resultSet
 
         except:
@@ -27,6 +29,7 @@ class User:
 
         finally:
             cursor.close()
+            conn.close()
 
     def checkUserLogin(self,data):
 

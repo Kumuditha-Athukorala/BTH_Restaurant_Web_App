@@ -6,11 +6,7 @@ function viewAllCustomers() {
         type: "POST",
         url: "/viewallcustomers",
         success: function (result) {
-            if (result == 1) {
-                alert('fine')
-
-            }
-
+            console.log(result)
         }
     });
 

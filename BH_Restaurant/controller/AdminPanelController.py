@@ -1,6 +1,7 @@
 from flask import *
 from app import app
 from service.UserService import UserService
+import json
 
 userService = UserService()
 
@@ -16,6 +17,8 @@ def viewAllCustomers():
     resultAllCustomers = userService.allCustomers()
     print(resultAllCustomers)
     print(type(resultAllCustomers))
+    my_json_string = json.dumps(resultAllCustomers)
 
-
-    return "1"
+    session["allusers"] = resultAllCustomers
+    print(type(session["allusers"]))
+    return my_json_string

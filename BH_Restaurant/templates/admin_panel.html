@@ -29,31 +29,22 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
+                                <th scope="col">Customer Id</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Status</th>
                             </tr>
                         </thead>
                         <tbody>
+                            {% for user in session["allusers"] %}
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+                                <td>{{ user.user_id }}</td>
+                                <td>{{ user.first_name }}</td>
+                                <td>{{ user.gender }}</td>
+                                <td>{{ user.status }}</td>
                             </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
+                            {% endfor %}
+
                         </tbody>
                     </table>
                 </div>
