@@ -24,24 +24,74 @@
                     </button>
                 </h5>
             </div>
-            <div id="collapseCustomers" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div id="collapseCustomers" class="collapse table-responsive" aria-labelledby="headingTwo"
+                data-parent="#accordion">
                 <div class="card-body">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered table-responsive">
                         <thead>
                             <tr>
-                                <th scope="col">Customer Id</th>
-                                <th scope="col">First Name</th>
+                                <th scope="col">Customer Name</th>
                                 <th scope="col">Gender</th>
+                                <th scope="col">Email</th>
                                 <th scope="col">Status</th>
+                                <th scope="col">Change Status</th>
+
+
                             </tr>
                         </thead>
                         <tbody>
                             {% for user in session["allusers"] %}
                             <tr>
-                                <td>{{ user.user_id }}</td>
-                                <td>{{ user.first_name }}</td>
+                                <td>{{ user.first_name }} {{ user.last_name }}</td>
                                 <td>{{ user.gender }}</td>
+                                <td>{{ user.email_address }}</td>
                                 <td>{{ user.status }}</td>
+                                <td><button type="button" class="btn btn-secondary">Change Status</button> </td>
+
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <div class="card">
+            <div class="card-header" id="headingBooking">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseBookings"
+                        aria-expanded="false" aria-controls="collapseTwo" onclick="viewAllBookings()()">
+                        View All Bookings
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseBookings" class="collapse table-responsive" aria-labelledby="headingBooking"
+                data-parent="#accordion">
+                <div class="card-body">
+                    <table class="table table-bordered table-responsive">
+                        <thead>
+                            <tr>
+                                <th scope="col">Booking Date</th>
+                                <th scope="col">Booking Time</th>
+                                <th scope="col">Head Count</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in session["allbookings"] %}
+                            <tr>
+                                <td>{{ item.date }}</td>
+                                <td>{{ item.time }}</td>
+                                <td>{{ item.nop + item.noc }}</td>
+                                <td><button type="button" class="btn btn-secondary">Change Status</button> </td>
+
                             </tr>
                             {% endfor %}
 

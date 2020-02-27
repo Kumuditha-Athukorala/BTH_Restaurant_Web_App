@@ -1,3 +1,4 @@
+import pymysql
 from database import Database
 
 database = Database()
@@ -53,5 +54,21 @@ class Booking:
 
         except:
             print("Database Error...!")
+        finally:
+            cursor.close()
+
+    def getAllBookings(self):
+        try:
+
+            conn = database.commitDatabaseConnection()
+            cursor = conn.cursor(pymysql.cursors.DictCursor)
+            cursor.execute("SELECT * FROM booking")
+            resultSet = cursor.fetchall()
+            print(type(resultSet))
+            return resultSet
+
+        except:
+            print("Database Error...!")
+
         finally:
             cursor.close()

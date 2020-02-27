@@ -6,7 +6,10 @@ tableBookingService = TableBookingService()
 
 @app.route('/booktable')
 def tableBooking():
-    return render_template('table_booking.html')
+    if session.get("user") is None:
+        return render_template('login.html')
+    else:
+        return render_template('table_booking.html')
 
 
 @app.route('/booking',methods=['POST'])

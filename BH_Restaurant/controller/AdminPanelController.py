@@ -1,9 +1,11 @@
 from flask import *
 from app import app
 from service.UserService import UserService
+from service.TableBookingService import TableBookingService
 import json
 
 userService = UserService()
+bookingService = TableBookingService()
 
 @app.route('/adminpanel')
 def adminPanel():
@@ -14,11 +16,23 @@ def adminPanel():
 
 @app.route('/viewallcustomers', methods=['POST'])
 def viewAllCustomers():
+
     resultAllCustomers = userService.allCustomers()
-    print(resultAllCustomers)
-    print(type(resultAllCustomers))
-    my_json_string = json.dumps(resultAllCustomers)
+    customer_json_string = json.dumps(resultAllCustomers)
 
     session["allusers"] = resultAllCustomers
-    print(type(session["allusers"]))
-    return my_json_string
+
+    return customer_json_string
+
+@app.route('/viewallbookings', methods=['POST'])
+def viewAllBookings():
+
+    resultAllBookings = bookingService.getAllBookings()
+   # booking_json_string = json.dumps(resultAllBookings)
+
+    session["allbookings"] = resultAllBookings
+    print(resultAllBookings)
+
+    return "1"
+
+
