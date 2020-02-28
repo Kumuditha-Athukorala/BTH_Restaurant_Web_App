@@ -19,7 +19,7 @@
             <div class="card-header" id="headingTwo">
                 <h5 class="mb-0">
                     <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseCustomers"
-                        aria-expanded="false" aria-controls="collapseTwo" onclick="viewAllCustomers()">
+                        aria-expanded="false" aria-controls="collapseTwo">
                         View All Customers
                     </button>
                 </h5>
@@ -35,8 +35,6 @@
                                 <th scope="col">Email</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Change Status</th>
-
-
                             </tr>
                         </thead>
                         <tbody>
@@ -46,7 +44,9 @@
                                 <td>{{ user.gender }}</td>
                                 <td>{{ user.email_address }}</td>
                                 <td>{{ user.status }}</td>
-                                <td><button type="button" class="btn btn-secondary">Change Status</button> </td>
+                                <td><button type="button" class="btn btn-secondary"
+                                        onclick="changeCustomerStatus({{user.user_id}})">Change Status</button>
+                                </td>
 
                             </tr>
                             {% endfor %}
@@ -67,7 +67,7 @@
             <div class="card-header" id="headingBooking">
                 <h5 class="mb-0">
                     <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseBookings"
-                        aria-expanded="false" aria-controls="collapseTwo" onclick="viewAllBookings()()">
+                        aria-expanded="false" aria-controls="collapseTwo">
                         View All Bookings
                     </button>
                 </h5>
@@ -78,20 +78,25 @@
                     <table class="table table-bordered table-responsive">
                         <thead>
                             <tr>
+                                <th scope="col">Customer Name</th>
                                 <th scope="col">Booking Date</th>
                                 <th scope="col">Booking Time</th>
                                 <th scope="col">Head Count</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">Customer Email</th>
+                                <th scope="col">Cancel Order</th>
+                                <th scope="col">Proceed Order</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for item in session["allbookings"] %}
                             <tr>
+                                <td>{{ item.first_name }} {{ item.last_name }}</td>
                                 <td>{{ item.date }}</td>
                                 <td>{{ item.time }}</td>
                                 <td>{{ item.nop + item.noc }}</td>
-                                <td><button type="button" class="btn btn-secondary">Change Status</button> </td>
-
+                                <td>{{ item.email_address }}</td>
+                                <td><button type="button" class="btn btn-secondary">Cancel</button> </td>
+                                <td><button type="button" class="btn btn-secondary">Proceed</button> </td>
                             </tr>
                             {% endfor %}
 

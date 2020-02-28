@@ -1,11 +1,15 @@
 from flask import *
 from app import app
+from service.CustomerService import CustomerService
 from service.UserService import UserService
 from service.TableBookingService import TableBookingService
+
+
 import json
 
 userService = UserService()
 bookingService = TableBookingService()
+customerService = CustomerService()
 
 @app.route('/adminpanel')
 def adminPanel():
@@ -32,6 +36,17 @@ def viewAllBookings():
 
     session["allbookings"] = resultAllBookings
     print(resultAllBookings)
+
+    return "1"
+
+@app.route('/changecustomerstatus', methods=['POST'])
+def changeCustomerStatus():
+
+    postData = request.form
+    print(postData)
+
+    result = customerService.updateUserStatus(postData)
+    print(result)
 
     return "1"
 

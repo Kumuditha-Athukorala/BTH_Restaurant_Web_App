@@ -62,7 +62,7 @@ class Booking:
 
             conn = database.commitDatabaseConnection()
             cursor = conn.cursor(pymysql.cursors.DictCursor)
-            cursor.execute("SELECT * FROM booking")
+            cursor.execute("SELECT * FROM booking b INNER JOIN user u ON b.user_id = u.user_id")
             resultSet = cursor.fetchall()
             print(type(resultSet))
             return resultSet

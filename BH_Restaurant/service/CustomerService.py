@@ -1,3 +1,4 @@
+
 from dao.Customer import Customer
 
 customer = Customer()
@@ -14,4 +15,11 @@ class CustomerService:
     def rgisterCustomer(self,data):
         result = customer.saveCustomer(data)
         print(result)
+        return result
+
+    def updateUserStatus(self,data):
+
+        id = data.get('userId')
+        result = customer.changeUserStatus(id)
+
         return result

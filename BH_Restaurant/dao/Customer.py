@@ -57,3 +57,20 @@ class Customer:
             cursor.close()
 
 
+
+    def changeUserStatus(self, userId):
+        try:
+
+            cursor = database.getDatabaseConnection()
+
+            sqlQuery = "UPDATE user SET status= CASE WHEN status=1 THEN 0 WHEN status=0 THEN 1 END WHERE user_id=%s"
+            cursor.execute(sqlQuery,userId)
+            result = database.commitDatabaseConnection().commit()
+            print(result)
+            return result
+
+        except:
+            print("Database Error...!")
+
+        finally:
+            cursor.close()
