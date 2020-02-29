@@ -105,10 +105,18 @@
                                 {% if item.status == "2" %}
                                 <td>Cancelled</td>
                                 {% endif %}
-                                <td><button type="button" class="btn btn-secondary"
-                                        onclick="cancelOrder()">Cancel</button> </td>
-                                <td><button type="button" class="btn btn-secondary" onclick="processOrder()">Proceess
-                                        Order</button> </td>
+                                <td>
+                                    {% if item.status == "0" %}
+                                    <button type="button" class="btn btn-secondary"
+                                        onclick="cancelOrder()">Cancel</button>
+                                </td>
+                                {% endif %}
+                                <td>
+                                    {% if item.status == "0" %}
+                                    <button type="button" class="btn btn-secondary" onclick="processOrder()">Proceess
+                                        Order</button>
+                                </td>
+                                {% endif %}
                             </tr>
                             {% endfor %}
 
