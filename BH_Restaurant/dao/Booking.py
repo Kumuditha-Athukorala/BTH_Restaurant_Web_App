@@ -17,6 +17,7 @@ class Booking:
             booking_date = data.get('booking_date')
             booking_time = data.get('booking_time')
             comment = data.get('comment')
+            status = "0"
 
             btime = "0"+booking_time + ":00:00"
             cursor = database.getDatabaseConnection()
@@ -24,8 +25,8 @@ class Booking:
             user_id = booking.getUserId(email)
             if(len(user_id) != 0):
 
-                sqlQuery = "INSERT INTO booking (mobile_number,email_address,nop,noc,date,time,description,user_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s )"
-                recordTuple = (phone, email,adult,children,booking_date,btime,comment,user_id,)
+                sqlQuery = "INSERT INTO booking (mobile_number,email_address,nop,noc,date,time,description,user_id, status) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s )"
+                recordTuple = (phone, email,adult,children,booking_date,btime,comment,user_id,status,)
 
                 cursor.execute(sqlQuery, recordTuple)
                 result = database.commitDatabaseConnection().commit()

@@ -18,8 +18,6 @@ $(document).ready(function () {
         });
     });
 
-
-
 });
 
 function changeCustomerStatus(id) {
@@ -50,4 +48,42 @@ function allCustomers() {
             console.log(result)
         }
     });
+}
+
+function cancelOrder() {
+
+    alert("cancel");
+
+    var purpose = "cancelOrder";
+    var customerName = document.getElementById("cusName").innerHTML;
+    var orderDate = document.getElementById("orderDate").innerHTML;
+    var orderTime = document.getElementById("orderTime").innerHTML;
+    var headCount = document.getElementById("headCount").innerHTML;
+    var orderEmail = document.getElementById("orderEmail").innerHTML;
+
+    console.log(customerName, orderDate, orderTime, headCount, orderEmail);
+    cancelorderData = {
+        "o_purpose": purpose,
+        "o_name": customerName,
+        "o_date": orderDate,
+        "o_time": orderTime,
+        "o_count": headCount,
+        "o_email": orderEmail
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "/cancelorder",
+        data: cancelorderData,
+        success: function (result) {
+            console.log(result);
+            // window.location.reload();
+        }
+    });
+
+}
+
+
+function processOrder() {
+
 }

@@ -3,6 +3,8 @@ from app import app
 from service.CustomerService import CustomerService
 from service.UserService import UserService
 from service.TableBookingService import TableBookingService
+from service.EmailService import EmailBTH
+
 
 
 import json
@@ -10,6 +12,8 @@ import json
 userService = UserService()
 bookingService = TableBookingService()
 customerService = CustomerService()
+
+emailbth = EmailBTH()
 
 @app.route('/adminpanel')
 def adminPanel():
@@ -50,4 +54,14 @@ def changeCustomerStatus():
 
     return "1"
 
+
+@app.route('/cancelorder', methods=['POST'])
+def cancelOrder():
+    print("cancel Order")
+    postData = request.form
+    print(postData.get('o_name'))
+
+    emailbth.sendEmail(postData)
+
+    return "1"
 
