@@ -73,3 +73,42 @@ class Booking:
 
         finally:
             cursor.close()
+
+
+
+    def cancelBookingRecord(self,data):
+
+        booking_id = data.get
+
+        try:
+            cursor = database.getDatabaseConnection()
+            sqlQuery = "UPDATE booking SET status= 2 WHERE booking_id=%s"
+            cursor.execute(sqlQuery,booking_id)
+            result = database.commitDatabaseConnection().commit()
+            print(result)
+            return result
+
+        except:
+            print("Database Error...!")
+
+        finally:
+            cursor.close()
+
+    def confirmBookingRecord(self, id):
+
+        booking_id =id
+
+        try:
+            cursor = database.getDatabaseConnection()
+            sqlQuery = "UPDATE booking SET status= 1 WHERE booking_id=%s"
+            cursor.execute(sqlQuery, booking_id)
+            result = database.commitDatabaseConnection().commit()
+            print(result)
+            return result
+
+        except:
+            print("Database Error...!")
+
+        finally:
+            cursor.close()
+

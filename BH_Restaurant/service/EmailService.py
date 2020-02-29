@@ -10,7 +10,7 @@ class EmailBTH:
             try:
                 print("cancel order")
                 sender_email = "mail4kumuditha@gmail.com"
-                receiver_email = "kumudithaudesha@gmail.com"
+                receiver_email = data.get("o_email")
                 password = "mailforkuma123$"
 
                 message = MIMEMultipart("alternative")
@@ -52,16 +52,16 @@ class EmailBTH:
                     server.sendmail(
                         sender_email, receiver_email, message.as_string()
                     )
-
+                return "0"
 
             except:
                 print("Something went wrong with the Email Server..!")
 
         if(data.get("purpose") == "processOrder"):
             try:
-                print("cancel order")
+                print("process Order")
                 sender_email = "mail4kumuditha@gmail.com"
-                receiver_email = data.get("")
+                receiver_email = data.get("o_email")
                 password = "mailforkuma123$"
 
                 message = MIMEMultipart("alternative")
@@ -78,7 +78,7 @@ class EmailBTH:
                                               <body>
                                               <h5> Hi, <br>
                                                  Thank you for choosing BT-HOUSE. </h5>
-                                                <p>We are really sorry, We cannot process your booking right now..!!! <br>
+                                                <p>We are happily inform you that, We have processed your booking..!!! <br>
                                                 For More Information Please Contact Us :- 08964553425 <br><br>
                                                 Thank You.<br>
                                                 BT-HOUSE MANAGEMENT
@@ -103,7 +103,7 @@ class EmailBTH:
                     server.sendmail(
                         sender_email, receiver_email, message.as_string()
                     )
-
+                return "1"
 
             except:
                 print("Something went wrong with the Email Server..!")

@@ -55,13 +55,19 @@ def changeCustomerStatus():
     return "1"
 
 
-@app.route('/cancelorder', methods=['POST'])
+@app.route('/cancel_or_process_order', methods=['POST'])
 def cancelOrder():
-    print("cancel Order")
-    postData = request.form
-    print(postData.get('o_name'))
 
-    emailbth.sendEmail(postData)
+    print("cancel_or_process_order")
+    postData = request.form
+    purpose = postData.get("o_purpose")
+    print(purpose)
+
+    id = postData.get("o_id")
+    print(id)
+
+    # result = emailbth.sendEmail(postData)
+    # bookingService.processBookingOrder()
 
     return "1"
 

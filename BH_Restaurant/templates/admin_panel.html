@@ -108,12 +108,13 @@
                                 <td>
                                     {% if item.status == "0" %}
                                     <button type="button" class="btn btn-secondary"
-                                        onclick="cancelOrder()">Cancel</button>
+                                        onclick="processOrder('cancelOrder',{{item.booking_id}})">Cancel</button>
                                 </td>
                                 {% endif %}
                                 <td>
                                     {% if item.status == "0" %}
-                                    <button type="button" class="btn btn-secondary" onclick="processOrder()">Proceess
+                                    <button type="button" class="btn btn-secondary"
+                                        onclick="processOrder('processOrder',{{item.booking_id}})">Proceess
                                         Order</button>
                                 </td>
                                 {% endif %}

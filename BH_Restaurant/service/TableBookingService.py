@@ -11,3 +11,9 @@ class TableBookingService:
     def getAllBookings(self):
         result = booking.getAllBookings()
         return result
+
+    def processBookingOrder(self,status,id):
+        if(status == "cancel"):
+            booking.cancelBookingRecord(id)
+        else:
+            booking.confirmBookingRecord(id)
