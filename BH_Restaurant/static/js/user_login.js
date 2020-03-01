@@ -28,7 +28,7 @@ function checkLoginForm() {
       success: function (result) {
         if (result == 1) {
           // myprofile();
-          window.location.href = "/profile";
+          window.location.href = "/";
         } else {
           document.getElementById("login-message").innerHTML = "Invalied Login Credentials...!";
         }

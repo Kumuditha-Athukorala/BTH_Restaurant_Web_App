@@ -38,12 +38,14 @@ def logout():
     return render_template('index.html')
 
 
-@app.route('/mybookings')
+@app.route('/mybookings', methods=['POST'])
 def getMyBookings():
     if session.get("user") is None:
         return render_template('login.html')
     else:
-        userId = session.get("userid")
+        userId = session.get("userId")
+        print(userId)
+        print(type(userId))
         resultSet = bookingService.getMyBookingDetails(userId)
 
         session["MyBookings"] = resultSet

@@ -41,12 +41,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for item in session["MyBookings"] %}
+                            {% for booking in session["MyBookings"] %}
                             <tr>
-                                <td>{{ item.date }}</td>
-                                <td>{{ item.time }}</td>
-                                <td>{{ item.nop }}</td>
-                                <td>{{ item.noc }}</td>
+                                <td>{{ booking.date }}</td>
+                                <td>{{ booking.time }}</td>
+                                <td>{{ booking.nop }}</td>
+                                <td>{{ booking.noc }}</td>
+                                {% if booking.status == "0" %}
+                                <td>Pending</td>
+                                {% endif %}
+                                {% if booking.status == "1" %}
+                                <td>Processed</td>
+                                {% endif %}
+                                {% if booking.status == "2" %}
+                                <td>Cancelled</td>
+                                {% endif %}
 
                             </tr>
                             {% endfor %}
@@ -55,11 +64,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
 
 
         <div class="card">
@@ -108,14 +112,5 @@
     </div>
 
 </div>
-
-
-
-
-
-
-
-
-
 
 {% endblock %}

@@ -76,6 +76,7 @@ class Booking:
 
 
 
+
     def cancelBookingRecord(self,id):
 
         try:
@@ -91,6 +92,7 @@ class Booking:
 
         finally:
             cursor.close()
+
 
 
     def confirmBookingRecord(self, id):
@@ -111,11 +113,14 @@ class Booking:
 
 
     def getMyBookings(self,id):
-        try:
 
-            conn = database.commitDatabaseConnection()
-            cursor = conn.cursor(pymysql.cursors.DictCursor)
-            cursor.execute("SELECT * FROM booking WHERE user_id=%s", id)
+        try:
+            db = Database()
+            userId = str(id)
+            dbconn = db.commitDatabaseConnection()
+            cursor = dbconn.cursor(pymysql.cursors.DictCursor)
+            sql = "SELECT * FROM booking WHERE user_id = %s "
+            cursor.execute(sql, userId)
             resultSet = cursor.fetchall()
             print(type(resultSet))
             return resultSet
@@ -125,3 +130,8 @@ class Booking:
 
         finally:
             cursor.close()
+            dbconn.close()
+
+
+
+
