@@ -18,3 +18,8 @@ class TableBookingService:
             booking.cancelBookingRecord(id)
         else:
             booking.confirmBookingRecord(id)
+
+    def getMyBookingDetails(self, id):
+
+        resultSet = booking.getMyBookings(id)
+        return resultSet

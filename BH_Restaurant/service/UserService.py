@@ -10,6 +10,7 @@ class UserService:
         if len(result) == 1:
             for row in result:
                 session["user"] = row[1]
+                session["userId"] = row[0]
             return 1
         else:
             return 0

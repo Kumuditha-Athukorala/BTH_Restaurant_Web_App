@@ -15,4 +15,107 @@
     <div class="col-sm-4"> </div>
 </div>
 
+
+<div class="container">
+    <div id="accordion">
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsemybookings"
+                        aria-expanded="false" aria-controls="collapseTwo">
+                        View My Booking Details
+                    </button>
+                </h5>
+            </div>
+            <div id="collapsemybookings" class="collapse table-responsive" aria-labelledby="headingTwo"
+                data-parent="#accordion">
+                <div class="card-body">
+                    <table class="table table-bordered table-responsive">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">No. Of People</th>
+                                <th scope="col">No. Of Children</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in session["MyBookings"] %}
+                            <tr>
+                                <td>{{ item.date }}</td>
+                                <td>{{ item.time }}</td>
+                                <td>{{ item.nop }}</td>
+                                <td>{{ item.noc }}</td>
+
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <div class="card">
+            <div class="card-header" id="headingBooking">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseBookings"
+                        aria-expanded="false" aria-controls="collapseTwo">
+                        View All Bookings
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseBookings" class="collapse table-responsive" aria-labelledby="headingBooking"
+                data-parent="#accordion">
+                <div class="card-body">
+                    <table class="table table-bordered table-responsive">
+                        <thead>
+                            <tr>
+                                <th scope="col">Customer Name</th>
+                                <th scope="col">Booking Date</th>
+                                <th scope="col">Booking Time</th>
+                                <th scope="col">Head Count</th>
+                                <th scope="col">Customer Email</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Cancel Order</th>
+                                <th scope="col">Proceed Order</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td id="cusName"></td>
+                                <td id="orderDate"></td>
+                                <td id="orderTime"> </td>
+                                <td id="headCount"></td>
+                                <td id="orderEmail"></td>
+                                <td id=""></td>
+                                <td></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
 {% endblock %}

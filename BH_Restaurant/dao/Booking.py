@@ -109,3 +109,19 @@ class Booking:
         finally:
             cursor.close()
 
+
+    def getMyBookings(self,id):
+        try:
+
+            conn = database.commitDatabaseConnection()
+            cursor = conn.cursor(pymysql.cursors.DictCursor)
+            cursor.execute("SELECT * FROM booking WHERE user_id=%s", id)
+            resultSet = cursor.fetchall()
+            print(type(resultSet))
+            return resultSet
+
+        except:
+            print("Database Error...!")
+
+        finally:
+            cursor.close()
