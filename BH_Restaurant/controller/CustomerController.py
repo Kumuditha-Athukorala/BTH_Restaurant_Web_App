@@ -31,3 +31,16 @@ def registerCustomer():
     print(result)
 
     return str(result)
+
+@app.route('/updateCustomer', methods=['POST'])
+def updateCustomerDetails():
+    print("Update")
+
+    postData = request.form
+    print(postData)
+
+    userId = session.get("userId")
+    result = customerService.updateCustomerDetails(postData,userId)
+
+    print(result)
+    return str(result)

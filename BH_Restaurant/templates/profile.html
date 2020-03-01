@@ -71,40 +71,61 @@
                 <h5 class="mb-0">
                     <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseBookings"
                         aria-expanded="false" aria-controls="collapseTwo">
-                        View All Bookings
+                        Update My Details
                     </button>
                 </h5>
             </div>
             <div id="collapseBookings" class="collapse table-responsive" aria-labelledby="headingBooking"
                 data-parent="#accordion">
                 <div class="card-body">
-                    <table class="table table-bordered table-responsive">
-                        <thead>
-                            <tr>
-                                <th scope="col">Customer Name</th>
-                                <th scope="col">Booking Date</th>
-                                <th scope="col">Booking Time</th>
-                                <th scope="col">Head Count</th>
-                                <th scope="col">Customer Email</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Cancel Order</th>
-                                <th scope="col">Proceed Order</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                    <div class="row" style="margin: 0; padding: 0;" xmlns="">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4">
+                            <h2 style="text-align: center;">Update Customer Details</h2>
+                            <form method="POST">
+                                <div class="form-group">
+                                    <label for="fname">First Name:</label>
+                                    <input type="text" class="form-control" id="fname" placeholder="Enter First Name"
+                                        name="fname" required>
+                                </div>
 
-                            <tr>
-                                <td id="cusName"></td>
-                                <td id="orderDate"></td>
-                                <td id="orderTime"> </td>
-                                <td id="headCount"></td>
-                                <td id="orderEmail"></td>
-                                <td id=""></td>
-                                <td></td>
-                            </tr>
+                                <div class="form-group">
+                                    <label for="lname">Last Name:</label>
+                                    <input type="text" class="form-control" id="lname" placeholder="Enter Last Name"
+                                        name="lname" required>
+                                </div>
 
-                        </tbody>
-                    </table>
+                                <div class="form-group">
+                                    <label for="gender">Gender:</label>
+                                    <select class="form-control" id="sel1" name="gender" required>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cnumber">Contact Number:</label>
+                                    <input type="number" class="form-control" id="cnumber"
+                                        placeholder="Enter Contact Number" name="cnumber" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="address">Address:</label>
+                                    <textarea class="form-control" rows="5" id="address" name="addr"
+                                        required></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label id="update-message" style="color: red;"></label>
+                                </div>
+                                <button type="button" class="btn btn-primary"
+                                    onclick="return checkCustomerUpdates()">Update </button>
+                                <button type="button" class="btn btn-danger"
+                                    onclick="cancelUpdateForm()">Cancel</button>
+                            </form>
+                        </div>
+                        <div class="col-sm-4"> </div>
+                    </div>
                 </div>
             </div>
         </div>

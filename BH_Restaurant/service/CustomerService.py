@@ -23,3 +23,10 @@ class CustomerService:
         result = customer.changeUserStatus(id)
 
         return result
+
+    def updateCustomerDetails(self,data,id):
+
+        result =customer.updateCustomerDetails(data,id)
+        return result
+
+

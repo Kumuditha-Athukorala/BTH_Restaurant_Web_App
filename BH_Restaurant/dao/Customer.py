@@ -74,3 +74,30 @@ class Customer:
 
         finally:
             cursor.close()
+
+
+    def updateCustomerDetails(self, data, id):
+        try:
+
+            userId = id
+            firstName = data.get('firstName')
+            lastname = data.get('lastName')
+            gender = data.get('gender')
+            phone = data.get('phone')
+            address = data.get('address')
+
+            db = Database()
+            cursor = db.getDatabaseConnection()
+
+            sqlQuery = "UPDATE user SET first_name=%s, last_name=%s, gender=%s, contact_number=%s, address=%s WHERE user_id = %s "
+            recordTuple = (firstName,lastname,gender,phone,address,userId)
+            cursor.execute(sqlQuery,recordTuple)
+            result = db.commitDatabaseConnection().commit()
+            print(result)
+            return result
+
+        except:
+            print("Database Error...!")
+
+        finally:
+            cursor.close()
