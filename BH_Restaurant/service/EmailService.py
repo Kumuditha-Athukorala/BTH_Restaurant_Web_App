@@ -6,7 +6,7 @@ class EmailBTH:
 
     def sendEmail(self,data):
 
-        if(data.get("o_purpose") == "cancelOrder"):
+        if(data.get("o_purpose") == "cancel"):
             try:
                 print("cancel order")
                 sender_email = "mail4kumuditha@gmail.com"
@@ -57,7 +57,7 @@ class EmailBTH:
             except:
                 print("Something went wrong with the Email Server..!")
 
-        if(data.get("purpose") == "processOrder"):
+        if(data.get("purpose") == "process"):
             try:
                 print("process Order")
                 sender_email = "mail4kumuditha@gmail.com"

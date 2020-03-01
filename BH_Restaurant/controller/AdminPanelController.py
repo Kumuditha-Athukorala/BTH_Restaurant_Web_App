@@ -60,14 +60,16 @@ def cancelOrder():
 
     print("cancel_or_process_order")
     postData = request.form
+    print(postData)
     purpose = postData.get("o_purpose")
     print(purpose)
 
     id = postData.get("o_id")
     print(id)
 
-    # result = emailbth.sendEmail(postData)
-    # bookingService.processBookingOrder()
+    result = emailbth.sendEmail(postData)
+    print(result)
+    bookingService.processBookingOrder(result,id)
 
     return "1"
 

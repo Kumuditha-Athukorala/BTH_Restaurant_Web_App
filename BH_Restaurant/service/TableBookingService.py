@@ -13,7 +13,8 @@ class TableBookingService:
         return result
 
     def processBookingOrder(self,status,id):
-        if(status == "cancel"):
+        print(status,id)
+        if(status == "0"):
             booking.cancelBookingRecord(id)
         else:
             booking.confirmBookingRecord(id)

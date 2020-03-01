@@ -76,14 +76,12 @@ class Booking:
 
 
 
-    def cancelBookingRecord(self,data):
-
-        booking_id = data.get
+    def cancelBookingRecord(self,id):
 
         try:
             cursor = database.getDatabaseConnection()
             sqlQuery = "UPDATE booking SET status= 2 WHERE booking_id=%s"
-            cursor.execute(sqlQuery,booking_id)
+            cursor.execute(sqlQuery,id)
             result = database.commitDatabaseConnection().commit()
             print(result)
             return result
@@ -94,14 +92,13 @@ class Booking:
         finally:
             cursor.close()
 
-    def confirmBookingRecord(self, id):
 
-        booking_id =id
+    def confirmBookingRecord(self, id):
 
         try:
             cursor = database.getDatabaseConnection()
             sqlQuery = "UPDATE booking SET status= 1 WHERE booking_id=%s"
-            cursor.execute(sqlQuery, booking_id)
+            cursor.execute(sqlQuery, id)
             result = database.commitDatabaseConnection().commit()
             print(result)
             return result

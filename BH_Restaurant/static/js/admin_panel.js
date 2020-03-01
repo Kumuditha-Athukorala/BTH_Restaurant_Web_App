@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+    console.log("view all customers")
+
     $.ajax({
         type: "POST",
         url: "/viewallcustomers",
@@ -9,6 +11,7 @@ $(document).ready(function () {
     });
 
     $(document).ready(function () {
+        console.log("view all bookings")
         $.ajax({
             type: "POST",
             url: "/viewallbookings",
@@ -20,7 +23,11 @@ $(document).ready(function () {
 
 });
 
+
+
+
 function changeCustomerStatus(id) {
+
     alert(id);
     userData = {
         "userId": id
@@ -32,28 +39,18 @@ function changeCustomerStatus(id) {
         data: userData,
         success: function (result) {
             console.log(result);
-            allCustomers();
             window.location.reload();
         }
     });
 }
 
 
-function allCustomers() {
-
-    $.ajax({
-        type: "POST",
-        url: "/viewallcustomers",
-        success: function (result) {
-            console.log(result)
-        }
-    });
-}
-
 function processOrder(purpose, orderId) {
 
+
     alert("cancel or Process");
-    alert(purpose, orderId);
+    alert(purpose);
+    alert(orderId);
 
     var customerName = document.getElementById("cusName").innerHTML;
     var orderDate = document.getElementById("orderDate").innerHTML;
@@ -64,7 +61,7 @@ function processOrder(purpose, orderId) {
     console.log(customerName, orderDate, orderTime, headCount, orderEmail);
     orderData = {
         "o_purpose": purpose,
-        "O_id": orderId,
+        "o_id": orderId,
         "o_name": customerName,
         "o_date": orderDate,
         "o_time": orderTime,
@@ -78,7 +75,8 @@ function processOrder(purpose, orderId) {
         data: orderData,
         success: function (result) {
             console.log(result);
-            // window.location.reload();
+
+            window.location.reload();
         }
     });
 
