@@ -3,6 +3,7 @@ from app import app
 from service.CustomerService import CustomerService
 from service.UserService import UserService
 from service.TableBookingService import TableBookingService
+from service.CategoryService import CategoryService
 from service.EmailService import EmailBTH
 
 
@@ -12,6 +13,7 @@ import json
 userService = UserService()
 bookingService = TableBookingService()
 customerService = CustomerService()
+catService = CategoryService()
 
 emailbth = EmailBTH()
 
@@ -75,3 +77,10 @@ def cancelOrder():
 
 @app.route('/addNewCategory', methods=['POST'])
 def newCategory():
+    print("cateeeee")
+    postData = request.form
+    print(postData)
+
+    result = catService.saveFoodCategory(postData)
+    print(result)
+    return str(result)
