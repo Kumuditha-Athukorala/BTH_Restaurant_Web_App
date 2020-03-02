@@ -11,6 +11,7 @@ class UserService:
             for row in result:
                 session["user"] = row[1]
                 session["userId"] = row[0]
+                session["email"] = row[6]
             return 1
         else:
             return 0
@@ -18,4 +19,10 @@ class UserService:
 
     def allCustomers(self):
         result = user.getAllCustomers()
+        return result
+
+
+    def changePassword(self,data,id):
+
+        result = user.updatePassword(data,id)
         return result

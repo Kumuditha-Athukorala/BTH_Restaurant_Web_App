@@ -52,3 +52,21 @@ def getMyBookings():
         print(resultSet)
 
         return "1"
+
+@app.route('/changePassword', methods=['POST'])
+def changePassword():
+    if session.get("user") is None:
+        return render_template('login.html')
+    else:
+        userId = session.get("userId")
+        print(userId)
+
+        postData = request.form
+        print(postData)
+
+        result = userService.changePassword(postData,userId)
+
+        print("change pwwww")
+        print(result)
+
+        return "1"

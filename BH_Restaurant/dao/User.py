@@ -57,3 +57,27 @@ class User:
             cursor.close()
 
 
+
+    def updatePassword(self, data, id):
+        try:
+
+            userId = id
+            email = data.get('username')
+            password = data.get('password')
+
+            db = Database()
+            cursor = db.getDatabaseConnection()
+
+            sqlQuery = "UPDATE user SET password=%s WHERE user_id = %s AND email_address=%s "
+            recordTuple = (password,userId,email)
+            cursor.execute(sqlQuery,recordTuple)
+            result = db.commitDatabaseConnection().commit()
+            print(result)
+            return result
+
+        except:
+            print("Database Error...!")
+
+        finally:
+            cursor.close()
+

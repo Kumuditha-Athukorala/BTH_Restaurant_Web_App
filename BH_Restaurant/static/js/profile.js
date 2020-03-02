@@ -88,3 +88,54 @@ function cancelUpdateForm() {
     alert("cancle");
     window.location.href = "/";
 }
+
+
+function changePassword() {
+
+    alert("change pw");
+
+    document.getElementById("change-pw-message").innerHTML = "";
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("pwd").value;
+    var conpswd = document.getElementById("repwd").value;
+
+
+
+    if (email == "" || password == "" || email == null || password == null) {
+        document.getElementById("change-pw-message").innerHTML = "Please Enter the New User Login Credentials...!";
+        return false;
+    } else if (password.length <= 7 || password.length >= 17) {
+        document.getElementById("change-pw-message").innerHTML = "Password must be 8-16 characters long...!";
+        return false;
+    } else if (password != conpswd) {
+        document.getElementById("change-pw-message").innerHTML = "Passwords are not matching...!";
+        return false;
+    } else {
+
+        newLoginData = {
+            "username": email,
+            "password": password
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/changePassword",
+            data: newLoginData,
+            success: function (result) {
+                if (result == 1) {
+
+                    window.location.href = "/";
+                } else {
+                    document.getElementById("change-pw-message").innerHTML = "Login credentials Changing is Invalied";
+                }
+
+            }
+        });
+    }
+
+}
+
+function cancelChangePassword() {
+    alert("cancle");
+    window.location.href = "/";
+}
