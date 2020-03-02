@@ -73,3 +73,5 @@ def cancelOrder():
 
     return "1"
 
+@app.route('/addNewCategory', methods=['POST'])
+def newCategory():

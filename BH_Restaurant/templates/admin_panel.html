@@ -127,6 +127,48 @@
             </div>
         </div>
 
+
+
+
+        <div class="card">
+            <div class="card-header" id="headingBooking">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseCategory"
+                        aria-expanded="false" aria-controls="collapseTwo">
+                        Add Menu Category
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseCategory" class="collapse table-responsive" aria-labelledby="headingBooking"
+                data-parent="#accordion">
+                <div class="card-body">
+                    <div class="row" style="margin: 0; padding: 0;" xmlns="">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4">
+                            <h2 style="text-align: center;">Add Menu Category</h2>
+                            <form method="POST">
+                                <div class="form-group">
+                                    <label for="category">Food Category Name:</label>
+                                    <input type="text" class="form-control" id="category" placeholder="Enter Category"
+                                        name="category">
+                                </div>
+
+                                <div class="message">
+                                    <label id="cat-message" style="color: red;"></label>
+                                </div>
+
+
+                                <button type="button" class="btn btn-primary" onclick="return addNewCategory();">Change
+                                    Password</button>
+                                <button type="button" class="btn btn-danger" onclick="cancelCat();">Cancel</button>
+                            </form>
+                        </div>
+                        <div class="col-sm-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 </div>

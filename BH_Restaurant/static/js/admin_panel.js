@@ -83,3 +83,48 @@ function processOrder(purpose, orderId) {
     });
 
 }
+
+
+
+function addNewCategory() {
+    alert("cat");
+
+    document.getElementById("cat-message").innerHTML = "";
+    var category = document.getElementById("category").value;
+
+
+    if (category == "" || category == null) {
+        document.getElementById("cat-message").innerHTML = "Please Enter the New Food Category ...!";
+        return false;
+    } else if (password.length <= 46) {
+        document.getElementById("cat-message").innerHTML = "Category Name is too long...!";
+        return false;
+    } else {
+
+        catData = {
+            "catName": category
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/addNewCategory",
+            data: catData,
+            success: function (result) {
+                if (result == 1) {
+
+                    window.location.href = "/";
+                } else {
+                    document.getElementById("change-pw-message").innerHTML = "Category Adding Cancelled..!";
+                }
+
+            }
+        });
+    }
+
+
+
+}
+
+function cancelCat() {
+
+}
