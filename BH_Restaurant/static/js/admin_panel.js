@@ -96,7 +96,7 @@ function addNewCategory() {
     if (category == "" || category == null) {
         document.getElementById("cat-message").innerHTML = "Please Enter the New Food Category ...!";
         return false;
-    } else if (password.length <= 46) {
+    } else if (category.length >= 46) {
         document.getElementById("cat-message").innerHTML = "Category Name is too long...!";
         return false;
     } else {
@@ -110,7 +110,7 @@ function addNewCategory() {
             url: "/addNewCategory",
             data: catData,
             success: function (result) {
-                if (result == 1) {
+                if (result == 'None') {
 
                     window.location.href = "/";
                 } else {
