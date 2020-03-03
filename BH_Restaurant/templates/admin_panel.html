@@ -169,6 +169,68 @@
             </div>
         </div>
 
+
+
+        <div class="card">
+            <div class="card-header" id="headingBooking">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseMenu"
+                        aria-expanded="false" aria-controls="collapseTwo">
+                        Add New Menu Item
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseMenu" class="collapse table-responsive" aria-labelledby="headingBooking"
+                data-parent="#accordion">
+                <div class="card-body">
+                    <div class="row" style="margin: 0; padding: 0;" xmlns="">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4">
+                            <h2 style="text-align: center;">Add New Menu Item</h2>
+                            <form action="/addMenu" method="post" enctype="multipart/form-data">
+
+                                <div class="form-group">
+                                    <label for="menuName">Menu Item Name:</label>
+                                    <input type="text" class="form-control" id="menuName" placeholder="Enter Menu Name"
+                                        name="menuName" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="m_cat">Main Catagory:</label>
+                                    <select class="form-control" id="sel1" name="m_cat" required>
+                                        <option value="1">Cat1</option>
+                                        <option value="2">Cat2</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="img">Image:</label>
+
+                                    <input type="file" name="file" class="form-control" id="img"
+                                        placeholder="Choose Image File" accept="image/*">
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="description">Description:</label>
+                                    <textarea class="form-control" rows="5" id="description" name="des"
+                                        required></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label id="menu-message" style="color: red;"></label>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Add Menu
+                                    Item </button>
+                                <button type="button" class="btn btn-danger" onclick="cancelMenuItem()">Cancel</button>
+                            </form>
+                        </div>
+                        <div class="col-sm-4"> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 </div>

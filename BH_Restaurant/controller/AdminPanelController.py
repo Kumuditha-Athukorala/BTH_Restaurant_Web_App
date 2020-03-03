@@ -6,9 +6,8 @@ from service.TableBookingService import TableBookingService
 from service.CategoryService import CategoryService
 from service.EmailService import EmailBTH
 
-
-
 import json
+import base64
 
 userService = UserService()
 bookingService = TableBookingService()
@@ -84,3 +83,34 @@ def newCategory():
     result = catService.saveFoodCategory(postData)
     print(result)
     return str(result)
+
+# @app.route('/addMenuItem', methods=['POST'])
+# def addMenu():
+#     print("adddddd")
+#
+#     postData = request.form
+#     print(postData)
+#
+#     # result = catService.saveMenuItem(postData)
+#     # print(result)
+#
+#     return "1"
+
+@app.route('/addMenu',methods=['POST'])
+def addMenuItem():
+    print("menuuuuuuuuuuu")
+    postData = request.form
+    print(postData)
+
+    img_file = request.files['file']
+    print(img_file)
+
+    encr_img = base64.b64encode(img_file.read())
+    print(encr_img)
+
+    catService.saveMenuItem(postData,encr_img)
+    return "Done"
+
+
+
+

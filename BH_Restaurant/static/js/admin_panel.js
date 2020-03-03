@@ -126,5 +126,15 @@ function addNewCategory() {
 }
 
 function cancelCat() {
+    alert("cancle");
+    window.location.href = "/";
 
+}
+
+
+
+
+function cancelMenuItem() {
+    alert("cancle");
+    window.location.href = "/";
 }
