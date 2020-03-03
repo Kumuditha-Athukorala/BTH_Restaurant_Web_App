@@ -198,8 +198,9 @@
                                 <div class="form-group">
                                     <label for="m_cat">Main Catagory:</label>
                                     <select class="form-control" id="sel1" name="m_cat" required>
-                                        <option value="1">Cat1</option>
-                                        <option value="2">Cat2</option>
+                                        {% for cat in session["Categories"] %}
+                                        <option value="{{ cat.category_id }}">{{ cat.cat_name }}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
 

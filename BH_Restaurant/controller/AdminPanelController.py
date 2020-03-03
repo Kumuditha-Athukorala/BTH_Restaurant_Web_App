@@ -98,6 +98,7 @@ def newCategory():
 
 @app.route('/addMenu',methods=['POST'])
 def addMenuItem():
+
     print("menuuuuuuuuuuu")
     postData = request.form
     print(postData)
@@ -111,6 +112,14 @@ def addMenuItem():
     catService.saveMenuItem(postData,encr_img)
     return "Done"
 
+
+@app.route('/allCategories',methods=['POST'])
+def allCategories():
+
+    resultSet = catService.getAllCtegories()
+    session['Categories'] = resultSet
+    print(resultSet)
+    return "None"
 
 
 

@@ -21,6 +21,16 @@ $(document).ready(function () {
         });
     });
 
+    $(document).ready(function () {
+        console.log("view all categories")
+        $.ajax({
+            type: "POST",
+            url: "/allCategories",
+            success: function (result) {
+                console.log(result)
+            }
+        });
+    });
 
 
 });
