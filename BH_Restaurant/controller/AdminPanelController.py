@@ -6,6 +6,9 @@ from service.TableBookingService import TableBookingService
 from service.CategoryService import CategoryService
 from service.EmailService import EmailBTH
 
+ALLOWED_EXTENSIONS = {'jpg', 'jpeg','png'}
+
+
 import json
 import base64
 
@@ -96,21 +99,35 @@ def newCategory():
 #
 #     return "1"
 
-@app.route('/addMenu',methods=['POST'])
+@app.route('/addMenu',methods=['POST','GET'])
 def addMenuItem():
 
-    print("menuuuuuuuuuuu")
+    print("Menu Item")
     postData = request.form
-    print(postData)
-
     img_file = request.files['file']
-    print(img_file)
-
     encr_img = base64.b64encode(img_file.read())
-    print(encr_img)
 
-    catService.saveMenuItem(postData,encr_img)
-    return "Done"
+    if 'file' not in request.files:
+        flash('No File Part in Request')
+        return redirect(request.url)
+
+
+    if img_file.filename == '':
+        flash('There is no selected Image')
+        return redirect(request.url)
+
+    if img_file and checkFileExtension(img_file.filename):
+        catService.saveMenuItem(postData,encr_img)
+        return render_template('admin_panel.html')
+    else:
+        flash('Wrong File Selection...!')
+        return redirect((request.url))
+
+def checkFileExtension(fileName):
+    print("extension")
+    return '.' in fileName and \
+           fileName.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 
 
 @app.route('/allCategories',methods=['POST'])

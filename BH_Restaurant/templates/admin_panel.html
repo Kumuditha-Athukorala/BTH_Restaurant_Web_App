@@ -187,7 +187,8 @@
                         <div class="col-sm-4"></div>
                         <div class="col-sm-4">
                             <h2 style="text-align: center;">Add New Menu Item</h2>
-                            <form action="/addMenu" method="post" enctype="multipart/form-data">
+                            <form action="/addMenu" method="post" enctype="multipart/form-data"
+                                onsubmit="return checkMenuSubmission()">
 
                                 <div class="form-group">
                                     <label for="menuName">Menu Item Name:</label>
@@ -205,23 +206,29 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="price">Price:</label>
+                                    <input type="text" class="form-control" id="price" placeholder="Enter Price"
+                                        name="price" required>
+                                </div>
+
+                                <div class="form-group">
                                     <label for="img">Image:</label>
 
                                     <input type="file" name="file" class="form-control" id="img"
-                                        placeholder="Choose Image File" accept="image/*">
+                                        placeholder="Choose Image File" accept="image/*" required>
 
                                 </div>
 
                                 <div class="form-group">
                                     <label for="description">Description:</label>
-                                    <textarea class="form-control" rows="5" id="description" name="des"
-                                        required></textarea>
+                                    <textarea class="form-control" rows="5" id="des" name="des" required></textarea>
                                 </div>
 
                                 <div class="form-group">
                                     <label id="menu-message" style="color: red;"></label>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Add Menu
+                                <button type="submit" class="btn btn-primary">Add
+                                    Menu
                                     Item </button>
                                 <button type="button" class="btn btn-danger" onclick="cancelMenuItem()">Cancel</button>
                             </form>

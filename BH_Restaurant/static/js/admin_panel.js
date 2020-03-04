@@ -141,8 +141,51 @@ function cancelCat() {
 
 }
 
+function checkMenuSubmission() {
+    alert("Menu");
+
+    document.getElementById("menu-message").innerHTML = "";
+
+    var itemName = document.getElementById("menuName").value;
+    var catId = document.getElementById("sel1").value;
+    var price = document.getElementById("price").value;
+    var image = document.getElementById("img").value;
+    var des = document.getElementById("des").value;
+
+    if (itemName == "" || itemName == null || catId == "" || catId == null || price == "" || price == null || image == "" || image == null || des == "" || des == null) {
+        document.getElementById("menu-message").innerHTML = "Please Enter All the Fields ...!";
+        return false;
+    } else if (!alphanumeric(itemName)) {
+        document.getElementById("menu-message").innerHTML = "Item Name is invailed...!";
+        return false;
+    } else if (itemName.length >= 100) {
+        document.getElementById("menu-message").innerHTML = "Item Name is too long...!";
+        return false;
+    } else if (des >= 400) {
+        document.getElementById("menu-message").innerHTML = "Description is too long...!";
+        return false;
+
+    } else if (!CheckDecimal(price)) {
+        document.getElementById("menu-message").innerHTML = "Price value is invalied...!";
+        return false;
+
+    } else {
+        return true;
+    }
 
 
+}
+
+function alphanumeric(input) {
+    return /^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/.test(input)
+}
+
+function CheckDecimal(input) {
+    alert("priceeee");
+    console.log(/^(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/.test(input));
+    return /^(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/.test(input);
+
+}
 
 function cancelMenuItem() {
     alert("cancle");
