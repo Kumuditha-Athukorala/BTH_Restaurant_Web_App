@@ -86,7 +86,7 @@
     font-size: 48px;
     padding-bottom: 10px;
     font-weight: 500;
-    color: #f78e21;
+    color: black;
     text-transform: uppercase;
 }
 
@@ -101,7 +101,7 @@
     margin-top: 20px;
     text-decoration: none;
     display: inline-block;
-    background-color: #f78e21;
+    background-color: red;
     width: 200px;
     height: 40px;
     text-align: center;
@@ -121,8 +121,21 @@
 
 }
 
+#bthouse {
+    color: silver;
+}
+
+#offers {
+    color: silver;
+}
+
+#history {
+    color: silver;
+}
+
 .f_container {
     text-align: center;
+    color: silver;
 
 }
 
