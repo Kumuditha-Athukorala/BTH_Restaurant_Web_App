@@ -1,8 +1,12 @@
 from flask import *
+import base64
 from app import app
 from service.CustomerService import CustomerService
+from service.CategoryService import CategoryService
+from dao.BTMenu import BTMenu
 
 customerService = CustomerService()
+catService = CategoryService()
 
 
 @app.route('/customer_registration',methods=['GET'])
@@ -44,3 +48,21 @@ def updateCustomerDetails():
 
     print(result)
     return str(result)
+
+
+@app.route('/ourMenu', methods=['GET'])
+def ourMenu():
+    print("Menu")
+    MainCategories = catService.getAllCtegories()
+    MenuItems = catService.getMenuItemsWithCategory()
+    Items=[]
+    for i in MenuItems:
+        btm = BTMenu(i['menu_id'],i['menu_name'],i['price'], base64.b64decode(i['image']),i['description'],i['status'],i['category_id'],i['cat_name'])
+        Items.append(btm)
+
+    print(Items)
+
+    print(type(MainCategories))
+    print(type(MenuItems))
+
+    return render_template('Menu.html',data=MainCategories, Item_List = Items)

@@ -1,0 +1,45 @@
+{% extends "common.html" %}
+
+{% block content %}
+{% include "header.html" %}
+{% include "banner.html" %}
+
+
+
+<div class="row" style="margin: 0; padding: 0;" xmlns="">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <h2 style="text-align: center;">BT-HOUSE MENU</h2>
+    </div>
+    <div class="col-sm-4"> </div>
+</div>
+
+
+{% for cat in data %}
+<div class="row" style="margin: 0; padding: 0;" xmlns="">
+    <div class="col-sm-2"> </div>
+    <div class="col-sm-4">
+        <h2>{{cat['cat_name']}}</h2>
+    </div>
+    <div class="col-sm-2"> </div>
+    <div class="col-sm-2"> </div>
+    <div class="col-sm-2"> </div>
+
+</div>
+
+{% for btm in Item_List %}
+<div class="row" style="margin: 0; padding: 0;" xmlns="">
+    <div class="col-sm-4"></div>
+    {% if cat['category_id'] == btm.menuItemCatId %}
+    <div class="col-sm-4">
+        <h4>{{ btm.menuItemName }}</h4>
+    </div>
+    <div class="col-sm-2"> </div>
+    <div class="col-sm-2"> {{ btm.menuItemPrice }} </div>
+    {% endif %}
+</div>
+{% endfor %}
+{% endfor%}
+
+
+{% endblock %}
