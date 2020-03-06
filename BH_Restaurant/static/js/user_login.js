@@ -56,3 +56,62 @@ function myprofile() {
     url: "/myprofile"
   });
 }
+
+
+function fgpwProcess() {
+  alert("fgpwwwww");
+
+  document.getElementById("fgpw-message").innerHTML = "";
+
+  var fgemail = document.getElementById("fgemail").value;
+
+  if (fgemail == "" || fgemail == null) {
+    document.getElementById("fgpw-message").innerHTML = "Please Enter the Registerd Email...!";
+    return false;
+  } else if (!validateEmail(fgemail)) {
+    document.getElementById("fgpw-message").innerHTML = "Invalied Email Address...!";
+    return false;
+  } else {
+    emlData = {
+      "email": fgemail
+    }
+
+    $.ajax({
+      type: "POST",
+      url: "/checkEmail",
+      data: emlData,
+      success: function (result) {
+        if (result == 0) {
+          document.getElementById("fgpw-message").innerHTML = "Please Enter the Registered Email...!";
+        } else {
+          alert("Success Email");
+          sendpw(emlData);
+        }
+
+      }
+    });
+
+  }
+}
+
+
+function sendpw(emlData) {
+
+
+  $.ajax({
+    type: "POST",
+    url: "/forgotemail",
+    data: emlData,
+    success: function (result) {
+
+      if (result == '0') {
+        document.getElementById("login-message").innerHTML = "Please Check Your Registered Email..!!";
+
+      } else {
+        document.getElementById("fgpw-message").innerHTML = "Please Enter the Registerd Email...!";
+      }
+
+    }
+  });
+
+}

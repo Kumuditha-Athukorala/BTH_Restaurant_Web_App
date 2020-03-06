@@ -2,7 +2,7 @@
 
 {% block content %}
 {% include "banner.html" %}
-{% include "menubar.html" %}
+
 
 <div class="row" style="margin: 0; padding: 0;" xmlns="">
     <div class="col-sm-4"></div>
@@ -21,11 +21,48 @@
                 <label id="login-message" style="color: red;"></label>
             </div>
 
-
             <button type="button" class="btn btn-primary" onclick="return checkLoginForm();">Login</button>
             <button type="button" class="btn btn-danger" onclick="cancelLoginForm();">Cancel</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+                data-whatever="@mdo">Forgot Password</button>
         </form>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Please Enter The Registered Email Address</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Email:</label>
+                                <input type="email" class="form-control" name="fgemail" id="fgemail" required>
+                            </div>
+                            <div class="message">
+                                <label id="fgpw-message" style="color: red;"></label>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" onclick="return fgpwProcess()">Send
+                                    message</button>
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
     </div>
     <div class="col-sm-4"></div>
+</div>
+
+
 </div>
 {% endblock %}

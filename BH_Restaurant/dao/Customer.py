@@ -1,3 +1,4 @@
+import pymysql
 from database import Database
 
 database = Database()
@@ -101,3 +102,24 @@ class Customer:
 
         finally:
             cursor.close()
+
+
+    def getPassword(self,data):
+        try:
+            enterdEmail = data.get('email')
+            db = Database()
+            conn = db.commitDatabaseConnection()
+            cursor = conn.cursor(pymysql.cursors.DictCursor)
+            sqlQuery = "SELECT password FROM user WHERE email_address=%s"
+            cursor.execute(sqlQuery, enterdEmail)
+            resultSet = cursor.fetchall()
+            print(type(resultSet))
+            return resultSet
+
+        except:
+            print("Database Error...!")
+
+        finally:
+            cursor.close()
+            conn.close()
+

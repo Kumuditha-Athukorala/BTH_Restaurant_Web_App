@@ -66,3 +66,17 @@ def ourMenu():
     print(type(MenuItems))
 
     return render_template('Menu.html',data=MainCategories, Item_List = Items)
+
+
+@app.route('/forgotemail', methods=['POST'])
+def forgotPassword():
+    print("forgettttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt")
+
+    emData =request.form
+    print(emData)
+
+    result = customerService.recoverPassword(emData)
+    print("fgggggggggggggggggggggggggggggggggggggggggggggggggggggggtttttttttttt")
+    print(result)
+
+    return result

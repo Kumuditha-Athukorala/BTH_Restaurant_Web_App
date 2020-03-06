@@ -19,11 +19,17 @@ function checkCustomerRegistration() {
         document.getElementById("register-message").innerHTML = "Please Fill All the Details...!";
         return false;
 
+    } else if (!alphanumeric(fname)) {
+        document.getElementById("register-message").innerHTML = "First Name is invailed...!";
+        return false;
+    } else if (!alphanumeric(lname)) {
+        document.getElementById("register-message").innerHTML = "Last Name is invailed...!";
+        return false;
     } else if (fname.length > 25) {
-        document.getElementById("register-message").innerHTML = "First name is too long...!";
+        document.getElementById("register-message").innerHTML = "First Name is too long...!";
         return false;
     } else if (lname.length > 25) {
-        document.getElementById("register-message").innerHTML = "Last name is too long...!";
+        document.getElementById("register-message").innerHTML = "Last Name is too long...!";
         return false;
     } else if (address.length > 250) {
         document.getElementById("register-message").innerHTML = "Address is too long...!";
@@ -104,7 +110,12 @@ function validateEmail(mail) {
     return false;
 }
 
+function alphanumeric(input) {
+    return /^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/.test(input)
+}
+
+
 function cancelRegisterForm() {
-    alert("cancle");
+    alert("Do You Want To Cancel The Registration?");
     window.location.href = "/";
 }

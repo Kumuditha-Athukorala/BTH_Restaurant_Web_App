@@ -1,7 +1,9 @@
 
 from dao.Customer import Customer
+from service.PasswordRecoveryService import PwBackUpEmail
 
 customer = Customer()
+bkp = PwBackUpEmail()
 
 class CustomerService:
 
@@ -29,4 +31,17 @@ class CustomerService:
         result =customer.updateCustomerDetails(data,id)
         return result
 
+    def recoverPassword(self, data):
+        print("recover passsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss")
+
+        result = customer.getPassword(data)
+        pw = result[0]['password']
+        print(pw)
+        print(result)
+        print(type(result))
+        email = data.get('email')
+        print(email)
+        emlResponce = bkp.sendEmail(email,pw)
+
+        return emlResponce
 
