@@ -12,7 +12,7 @@ class PwBackUpEmail:
             password = "mailforkuma123$"
 
             message = MIMEMultipart("alternative")
-            message["Subject"] = "BTH Restaurant - Order Details"
+            message["Subject"] = "BTH Restaurant - Password Recover Details"
             message["From"] = sender_email
             message["To"] = receiver_email
 

@@ -21,7 +21,7 @@ emailbth = EmailBTH()
 
 @app.route('/adminpanel')
 def adminPanel():
-    if(session['user'] == 'Kuma'):
+    if(session['email'] == 'kumudithaudesha@gmail.com'):
         return render_template('admin_panel.html')
     else:
         return render_template('index.html')

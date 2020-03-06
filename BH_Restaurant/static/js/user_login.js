@@ -59,7 +59,6 @@ function myprofile() {
 
 
 function fgpwProcess() {
-  alert("fgpwwwww");
 
   document.getElementById("fgpw-message").innerHTML = "";
 
@@ -84,7 +83,7 @@ function fgpwProcess() {
         if (result == 0) {
           document.getElementById("fgpw-message").innerHTML = "Please Enter the Registered Email...!";
         } else {
-          alert("Success Email");
+
           sendpw(emlData);
         }
 
