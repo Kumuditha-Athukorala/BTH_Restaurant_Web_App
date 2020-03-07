@@ -55,9 +55,10 @@ def ourMenu():
     print("Menu")
     MainCategories = catService.getAllCtegories()
     MenuItems = catService.getMenuItemsWithCategory()
+    print(type(MenuItems))
     Items=[]
     for i in MenuItems:
-        btm = BTMenu(i['menu_id'],i['menu_name'],i['price'], base64.b64decode(i['image']),i['description'],i['status'],i['category_id'],i['cat_name'])
+        btm = BTMenu(i['menu_id'],i['menu_name'],i['price'], i['image'].decode("UTF-8"),i['description'],i['status'],i['category_id'],i['cat_name'])
         Items.append(btm)
 
     print(Items)

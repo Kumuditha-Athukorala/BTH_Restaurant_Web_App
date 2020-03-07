@@ -28,18 +28,22 @@
 </div>
 
 {% for btm in Item_List %}
-<div class="row" style="margin: 0; padding: 0;" xmlns="">
-    <div class="col-sm-4"></div>
+<div class="row" style="margin: 10px 0; padding: 0;" xmlns="">
+    <div class="col-sm-3"></div>
     {% if cat['category_id'] == btm.menuItemCatId %}
+    <div class="col-sm-2"> <img id="menu_img" src="data:;base64, {{btm.menuItemImage}}" alt=""></div>
     <div class="col-sm-4">
         <h4>{{ btm.menuItemName }}</h4>
+        <p>{{ btm.menuItemDescription }}</p>
     </div>
-    <div class="col-sm-2"> <img src={{btm.menuItemImage}} alt=""></div>
-    <div class="col-sm-2"> {{ btm.menuItemPrice }} </div>
+    <div class="col-sm-2">
+        <h4> &euro; {{ btm.menuItemPrice }} </h4>
+    </div>
     {% endif %}
+    <div class="col-sm-1"></div>
 </div>
 {% endfor %}
 {% endfor%}
 
-
+{% include "footer.html" %}
 {% endblock %}

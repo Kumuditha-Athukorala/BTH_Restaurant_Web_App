@@ -14,18 +14,22 @@ def login():
         return render_template('index.html')
 
 
-@app.route('/checklogin', methods=['POST'])
+@app.route('/checklogin', methods=['POST','GET'])
 def checkUserLogin():
-    session.pop('user', None)
-    session.pop('userId', None)
-    session.pop('email', None )
-    postData = request.form
-    print(postData)
+    if request.method == 'POST':
+        session.pop('user', None)
+        session.pop('userId', None)
+        session.pop('email', None)
+        postData = request.form
+        print(postData)
 
-    result = userService.checkUserLogin(postData)
-    print(result)
+        result = userService.checkUserLogin(postData)
+        print(result)
 
-    return str(result)
+        return str(result)
+    else:
+        return render_template('index.html')
+
 
 @app.route('/profile')
 def profile():
@@ -44,7 +48,7 @@ def logout():
     return render_template('index.html')
 
 
-@app.route('/mybookings', methods=['POST'])
+@app.route('/mybookings', methods=['POST','GET'])
 def getMyBookings():
     if session.get("email") is None:
         return render_template('login.html')
@@ -59,7 +63,7 @@ def getMyBookings():
 
         return "1"
 
-@app.route('/changePassword', methods=['POST'])
+@app.route('/changePassword', methods=['POST','GET'])
 def changePassword():
     if session.get("email") is None:
         return render_template('login.html')
