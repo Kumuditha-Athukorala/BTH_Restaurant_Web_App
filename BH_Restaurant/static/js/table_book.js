@@ -23,6 +23,12 @@ function checkTableBookingForm() {
 
         document.getElementById("booking-message").innerHTML = "Please Fill All the Details...!";
         return false;
+    } else if (!alphanumeric(fname)) {
+        document.getElementById("booking-message").innerHTML = "First Name is invailed...!";
+        return false;
+    } else if (!alphanumeric(lname)) {
+        document.getElementById("booking-message").innerHTML = "Last Name is invailed...!";
+        return false;
     } else if (fname.length > 25) {
         document.getElementById("booking-message").innerHTML = "First name is too long...!";
         return false;
@@ -122,6 +128,9 @@ function checkBookingTime(time) {
 
 }
 
+function alphanumeric(input) {
+    return /^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/.test(input)
+}
 
 function validatePhoneNumber(phone) {
     var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;

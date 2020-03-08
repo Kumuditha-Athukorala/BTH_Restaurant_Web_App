@@ -38,6 +38,8 @@ $(document).ready(function () {
 
 
 
+
+
 function changeCustomerStatus(id) {
 
     alert(id);
@@ -105,6 +107,9 @@ function addNewCategory() {
 
     if (category == "" || category == null) {
         document.getElementById("cat-message").innerHTML = "Please Enter the New Food Category ...!";
+        return false;
+    } else if (!alphanumeric(category)) {
+        document.getElementById("cat-message").innerHTML = "Category Name is Invalied...!";
         return false;
     } else if (category.length >= 46) {
         document.getElementById("cat-message").innerHTML = "Category Name is too long...!";

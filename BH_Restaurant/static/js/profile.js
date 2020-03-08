@@ -32,6 +32,12 @@ function checkCustomerUpdates() {
         document.getElementById("update-message").innerHTML = "Please Fill All the Details...!";
         return false;
 
+    } else if (!alphanumeric(fname)) {
+        document.getElementById("update-message").innerHTML = "First Name is invailed...!";
+        return false;
+    } else if (!alphanumeric(lname)) {
+        document.getElementById("update-message").innerHTML = "Last Name is invailed...!";
+        return false;
     } else if (fname.length > 25) {
         document.getElementById("update-message").innerHTML = "First name is too long...!";
         return false;
@@ -81,6 +87,11 @@ function validateNewPhoneNumber(phone) {
     } else {
         return false;
     }
+}
+
+
+function alphanumeric(input) {
+    return /^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/.test(input)
 }
 
 
