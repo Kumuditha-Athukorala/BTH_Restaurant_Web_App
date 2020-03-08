@@ -30,6 +30,7 @@
             <div id="collapsemybookings" class="collapse table-responsive" aria-labelledby="headingTwo"
                 data-parent="#accordion">
                 <div class="card-body">
+                    {% if bookingList|length > 0  %}
                     <table class="table table-bordered table-responsive">
                         <thead>
                             <tr>
@@ -41,10 +42,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for booking in session["MyBookings"] %}
+                            {% for booking in bookingList %}
                             <tr>
                                 <td>{{ booking.date }}</td>
-                                <td>{{ booking.time }}</td>
+                                <td>{{ booking.time }} PM</td>
                                 <td>{{ booking.nop }}</td>
                                 <td>{{ booking.noc }}</td>
                                 {% if booking.status == "0" %}
@@ -61,6 +62,12 @@
                             {% endfor %}
                         </tbody>
                     </table>
+                    {% endif %}
+                    {% if bookingList|length == 0 %}
+                    <div class="row" style="margin: 0; padding: 0;">
+                        <h5>No Booking Records Available</h5>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

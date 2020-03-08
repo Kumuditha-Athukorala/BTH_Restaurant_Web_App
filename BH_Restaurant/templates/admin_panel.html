@@ -27,6 +27,7 @@
             <div id="collapseCustomers" class="collapse table-responsive" aria-labelledby="headingTwo"
                 data-parent="#accordion">
                 <div class="card-body">
+                    {% if custData|length > 0  %}
                     <table class="table table-bordered table-responsive">
                         <thead>
                             <tr>
@@ -38,12 +39,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for user in session["allusers"] %}
+                            {% for user in custData %}
                             <tr>
                                 <td>{{ user.first_name }} {{ user.last_name }}</td>
                                 <td>{{ user.gender }}</td>
                                 <td>{{ user.email_address }}</td>
-                                <td>{{ user.status }}</td>
+                                {% if user.status == "0" %}
+                                <td>Deactive</td>
+                                {% endif %}
+                                {% if user.status == "1" %}
+                                <td>Active</td>
+                                {% endif %}
                                 <td><button type="button" class="btn btn-secondary"
                                         onclick="changeCustomerStatus({{user.user_id}})">Change Status</button>
                                 </td>
@@ -53,6 +59,12 @@
 
                         </tbody>
                     </table>
+                    {% endif %}
+                    {% if custData|length == 0 %}
+                    <div class="row" style="margin: 0; padding: 0;">
+                        <h5>No Customer Records Available</h5>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -75,6 +87,7 @@
             <div id="collapseBookings" class="collapse table-responsive" aria-labelledby="headingBooking"
                 data-parent="#accordion">
                 <div class="card-body">
+                    {% if bookingData|length > 0  %}
                     <table class="table table-bordered table-responsive">
                         <thead>
                             <tr>
@@ -89,7 +102,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for item in session["allbookings"] %}
+                            {% for item in bookingData %}
                             <tr>
                                 <td id="cusName">{{ item.first_name }} {{ item.last_name }}</td>
                                 <td id="orderDate">{{ item.date }}</td>
@@ -123,6 +136,12 @@
 
                         </tbody>
                     </table>
+                    {% endif %}
+                    {% if bookingData|length == 0 %}
+                    <div class="row" style="margin: 0; padding: 0;">
+                        <h5>No Order Records Available</h5>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

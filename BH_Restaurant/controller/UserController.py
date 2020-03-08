@@ -31,12 +31,13 @@ def checkUserLogin():
         return render_template('index.html')
 
 
-@app.route('/profile')
+@app.route('/profile',methods=['POST','GET'])
 def profile():
     if session.get("email") is None:
         return render_template('login.html')
     else:
-        return render_template('profile.html')
+        myBookings = getMyBookings()
+        return render_template('profile.html', bookingList = myBookings)
 
 @app.route('/logout')
 def logout():
@@ -48,7 +49,6 @@ def logout():
     return render_template('index.html')
 
 
-@app.route('/mybookings', methods=['POST','GET'])
 def getMyBookings():
     if session.get("email") is None:
         return render_template('login.html')
@@ -61,7 +61,7 @@ def getMyBookings():
         session["MyBookings"] = resultSet
         print(resultSet)
 
-        return "1"
+        return resultSet
 
 @app.route('/changePassword', methods=['POST','GET'])
 def changePassword():

@@ -21,31 +21,34 @@ emailbth = EmailBTH()
 
 @app.route('/adminpanel')
 def adminPanel():
-    if(session['email'] == 'kumudithaudesha@gmail.com'):
-        return render_template('admin_panel.html')
+    if(session.get("email") is not None and session['email'] == 'kumudithaudesha@gmail.com'):
+
+        resultAllCustomers = viewAllCustomers()
+        resultAllBookings = viewAllBookings()
+        return render_template('admin_panel.html',custData=resultAllCustomers, bookingData= resultAllBookings)
     else:
         return render_template('index.html')
 
-@app.route('/viewallcustomers', methods=['POST'])
+
 def viewAllCustomers():
 
     resultAllCustomers = userService.allCustomers()
-    customer_json_string = json.dumps(resultAllCustomers)
+    # customer_json_string = json.dumps(resultAllCustomers)
 
     session["allusers"] = resultAllCustomers
 
-    return customer_json_string
+    return resultAllCustomers
 
-@app.route('/viewallbookings', methods=['POST'])
+
 def viewAllBookings():
 
     resultAllBookings = bookingService.getAllBookings()
-   # booking_json_string = json.dumps(resultAllBookings)
+    #booking_json_string = json.dumps(resultAllBookings)
 
     session["allbookings"] = resultAllBookings
     print(resultAllBookings)
 
-    return "1"
+    return resultAllBookings
 
 @app.route('/changecustomerstatus', methods=['POST'])
 def changeCustomerStatus():

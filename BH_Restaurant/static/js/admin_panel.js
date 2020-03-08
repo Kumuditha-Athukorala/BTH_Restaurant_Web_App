@@ -1,44 +1,13 @@
 $(document).ready(function () {
-
-    console.log("view all customers")
-
+    console.log("view all categories")
     $.ajax({
         type: "POST",
-        url: "/viewallcustomers",
+        url: "/allCategories",
         success: function (result) {
             console.log(result)
         }
     });
-
-    $(document).ready(function () {
-        console.log("view all bookings")
-        $.ajax({
-            type: "POST",
-            url: "/viewallbookings",
-            success: function (result) {
-                console.log(result)
-            }
-        });
-    });
-
-    $(document).ready(function () {
-        console.log("view all categories")
-        $.ajax({
-            type: "POST",
-            url: "/allCategories",
-            success: function (result) {
-                console.log(result)
-            }
-        });
-    });
-
-
 });
-
-
-
-
-
 
 function changeCustomerStatus(id) {
 
