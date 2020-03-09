@@ -9,9 +9,9 @@ class UserService:
         result = user.checkUserLogin(data)
         if len(result) == 1:
             for row in result:
-                session["user"] = row[1]
-                session["userId"] = row[0]
-                session["email"] = row[6]
+                session["user"] = result[0]['first_name']
+                session["userId"] = result[0]['user_id']
+                session["email"] = result[0]['email_address']
             return 1
         else:
             return 0

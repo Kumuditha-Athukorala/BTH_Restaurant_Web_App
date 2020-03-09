@@ -1,6 +1,6 @@
 import pymysql
 from database import Database
-
+from werkzeug.security import generate_password_hash, check_password_hash
 
 class User:
     def __init__(self):
@@ -35,20 +35,32 @@ class User:
 
         try:
             database = Database()
-            cursor = database.getDatabaseConnection()
+            conn = database.commitDatabaseConnection()
+            cursor = conn.cursor(pymysql.cursors.DictCursor)
 
             uname = data.get('username')
             pswd  = data.get('password')
             status = '1'
 
-            print(uname)
-            print(type(uname))
 
-            sql_query = "SELECT * FROM user WHERE email_address = %s and password = %s and status =%s"
-            cursor.execute(sql_query,(uname,pswd,status,))
+            query = "SELECT * FROM user WHERE email_address = %s and status=%s"
+            cursor.execute(query, (uname,status))
             result = cursor.fetchall()
+            print("DBBBBBBBBBBBBBBBBBBBBBBBBbb")
+            print(type(result))
+            print(result[0]['password'])
+            print(check_password_hash(result[0]['password'],pswd))
 
-            return result
+            checkresult = check_password_hash(result[0]['password'],pswd)
+            emptyList = []
+            if len(result) != 0 and checkresult:
+                return result
+            elif len(result) != 0 and result[0]['password']== pswd:
+                return result
+            else:
+                return emptyList
+
+
 
         except:
             print("Database Error...!")
@@ -64,12 +76,12 @@ class User:
             userId = id
             email = data.get('username')
             password = data.get('password')
-
+            generatedPassword = generate_password_hash(password)
             db = Database()
             cursor = db.getDatabaseConnection()
 
             sqlQuery = "UPDATE user SET password=%s WHERE user_id = %s AND email_address=%s "
-            recordTuple = (password,userId,email)
+            recordTuple = (generatedPassword,userId,email)
             cursor.execute(sqlQuery,recordTuple)
             result = db.commitDatabaseConnection().commit()
             print(result)

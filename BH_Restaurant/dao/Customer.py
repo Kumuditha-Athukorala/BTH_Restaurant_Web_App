@@ -1,5 +1,6 @@
 import pymysql
 from database import Database
+from werkzeug.security import generate_password_hash, check_password_hash
 
 database = Database()
 class Customer:
@@ -40,11 +41,13 @@ class Customer:
             address = data.get('address')
             email = data.get('email')
             password = data.get('password')
+            generatedPassword = generate_password_hash(password)
+
             status = "1"
 
             cursor = database.getDatabaseConnection()
             sqlQuery = "INSERT INTO user (first_name,last_name,gender,contact_number,address,email_address,password,status) VALUES (%s, %s, %s, %s, %s, %s, %s, %s )"
-            recordTuple = (firstName, lastname, gender, phone, address, email, password, status)
+            recordTuple = (firstName, lastname, gender, phone, address, email, generatedPassword, status)
 
             cursor.execute(sqlQuery, recordTuple)
             result = database.commitDatabaseConnection().commit()

@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+
   $("div.blog-post").hover(
     function () {
       $(this).find("div.content-hide").slideToggle("fast");
@@ -52,3 +53,12 @@ function scrollToElement(selector, callback) {
     callback = null;
   });
 }
+
+
+function preventBack() {
+  window.history.forward();
+}
+setTimeout("preventBack()", 0);
+window.onunload = function () {
+  null
+};

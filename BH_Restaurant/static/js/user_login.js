@@ -12,8 +12,8 @@ function checkLoginForm() {
   } else if (!validateEmail(uname)) {
     document.getElementById("login-message").innerHTML = "Invalied Email Address...!";
     return false;
-  } else if (pswd.length <= 7 || pswd.length >= 17) {
-    document.getElementById("login-message").innerHTML = "Password must be 8-16 characters long...!";
+  } else if (pswd.length <= 7) {
+    document.getElementById("login-message").innerHTML = "Password must be more than  8 characters long...!";
     return false;
   } else {
     loginData = {
