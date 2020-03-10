@@ -53,42 +53,59 @@ def viewAllBookings():
 @app.route('/changecustomerstatus', methods=['POST'])
 def changeCustomerStatus():
 
-    postData = request.form
-    print(postData)
+    if (session.get("email") is not None and session['email'] == 'kumudithaudesha@gmail.com'):
+        postData = request.form
+        print(postData)
 
-    result = customerService.updateUserStatus(postData)
-    print(result)
+        result = customerService.updateUserStatus(postData)
+        print(result)
 
-    return "1"
+        return "1"
+
+    else:
+        return render_template('index.html')
+
 
 
 @app.route('/cancel_or_process_order', methods=['POST'])
 def cancelOrder():
 
-    print("cancel_or_process_order")
-    postData = request.form
-    print(postData)
-    purpose = postData.get("o_purpose")
-    print(purpose)
+    if (session.get("email") is not None and session['email'] == 'kumudithaudesha@gmail.com'):
+        print("cancel_or_process_order")
+        postData = request.form
+        print(postData)
+        purpose = postData.get("o_purpose")
+        print(purpose)
 
-    id = postData.get("o_id")
-    print(id)
+        id = postData.get("o_id")
+        print(id)
 
-    result = emailbth.sendEmail(postData)
-    print(result)
-    bookingService.processBookingOrder(result,id)
+        result = emailbth.sendEmail(postData)
+        print(result)
+        bookingService.processBookingOrder(result, id)
 
-    return "1"
+        return "1"
+    else:
+        return render_template('index.html')
+
+
+
+
 
 @app.route('/addNewCategory', methods=['POST'])
 def newCategory():
-    print("cateeeee")
-    postData = request.form
-    print(postData)
+    if (session.get("email") is not None and session['email'] == 'kumudithaudesha@gmail.com'):
+        print("cateeeee")
+        postData = request.form
+        print(postData)
 
-    result = catService.saveFoodCategory(postData)
-    print(result)
-    return str(result)
+        result = catService.saveFoodCategory(postData)
+        print(result)
+        return str(result)
+    else:
+        return render_template('index.html')
+
+
 
 # @app.route('/addMenuItem', methods=['POST'])
 # def addMenu():
@@ -104,27 +121,28 @@ def newCategory():
 
 @app.route('/addMenu',methods=['POST','GET'])
 def addMenuItem():
+    if (session.get("email") is not None and session['email'] == 'kumudithaudesha@gmail.com'):
 
-    print("Menu Item")
-    postData = request.form
-    img_file = request.files['file']
-    encr_img = base64.b64encode(img_file.read())
+        print("Menu Item")
+        postData = request.form
+        img_file = request.files['file']
+        encr_img = base64.b64encode(img_file.read())
 
-    if 'file' not in request.files:
-        flash('No File Part in Request')
-        return redirect(request.url)
+        if 'file' not in request.files:
+            flash('No File Part in Request')
+            return redirect(request.url)
 
+        if img_file.filename == '':
+            flash('There is no selected Image')
+            return redirect(request.url)
 
-    if img_file.filename == '':
-        flash('There is no selected Image')
-        return redirect(request.url)
+        if img_file and checkFileExtension(img_file.filename):
+            catService.saveMenuItem(postData, encr_img)
+            return render_template('admin_panel.html')
+        else:
+            flash('Wrong File Selection...!')
+            return redirect((request.url))
 
-    if img_file and checkFileExtension(img_file.filename):
-        catService.saveMenuItem(postData,encr_img)
-        return render_template('admin_panel.html')
-    else:
-        flash('Wrong File Selection...!')
-        return redirect((request.url))
 
 def checkFileExtension(fileName):
     print("extension")
@@ -135,11 +153,15 @@ def checkFileExtension(fileName):
 
 @app.route('/allCategories',methods=['POST'])
 def allCategories():
+    if (session.get("email") is not None and session['email'] == 'kumudithaudesha@gmail.com'):
+        resultSet = catService.getAllCtegories()
+        session['Categories'] = resultSet
+        print(resultSet)
+        return "None"
+    else:
+        return render_template('index.html')
 
-    resultSet = catService.getAllCtegories()
-    session['Categories'] = resultSet
-    print(resultSet)
-    return "None"
+
 
 
 

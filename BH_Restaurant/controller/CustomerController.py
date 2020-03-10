@@ -24,33 +24,40 @@ def checkEmail():
 
     return str(result)
 
-@app.route('/registerCustomer',methods=['POST'])
+@app.route('/registerCustomer',methods=['POST','GET'])
 def registerCustomer():
+    if(session.get("email")) is None:
+        print('register')
+        postData = request.form
+        print(postData)
 
-    print('register')
-    postData = request.form
-    print(postData)
+        result = customerService.rgisterCustomer(postData)
+        print(result)
 
-    result = customerService.rgisterCustomer(postData)
-    print(result)
+        return str(result)
+    else:
+        return render_template('index.html')
 
-    return str(result)
+
 
 @app.route('/updateCustomer', methods=['POST'])
 def updateCustomerDetails():
-    print("Update")
+    if (session.get("email")) is not None:
+        print("Update Customer")
+        postData = request.form
+        print(postData)
 
-    postData = request.form
-    print(postData)
+        userId = session.get("userId")
+        result = customerService.updateCustomerDetails(postData, userId)
 
-    userId = session.get("userId")
-    result = customerService.updateCustomerDetails(postData,userId)
+        print(result)
+        return str(result)
+    else:
+        return render_template('index.html')
 
-    print(result)
-    return str(result)
 
 
-@app.route('/ourMenu', methods=['GET'])
+@app.route('/ourMenu', methods=['GET','POST'])
 def ourMenu():
     print("Menu")
     MainCategories = catService.getAllCtegories()
@@ -71,13 +78,18 @@ def ourMenu():
 
 @app.route('/forgotemail', methods=['POST'])
 def forgotPassword():
-    print("forgettttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt")
 
-    emData =request.form
-    print(emData)
+    if (session.get("email")) is None:
+        print("forgot Password")
 
-    result = customerService.recoverPassword(emData)
-    print("fgggggggggggggggggggggggggggggggggggggggggggggggggggggggtttttttttttt")
-    print(result)
+        emData = request.form
+        print(emData)
 
-    return result
+        result = customerService.recoverPassword(emData)
+        print(result)
+
+        return result
+    else:
+        return render_template('index.html')
+
+

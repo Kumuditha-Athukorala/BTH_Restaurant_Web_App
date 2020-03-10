@@ -1,5 +1,5 @@
 function checkCustomerUpdates() {
-    alert("update");
+
 
     document.getElementById("update-message").innerHTML = "";
     var fname = document.getElementById("fname").value;
@@ -81,14 +81,14 @@ function alphanumeric(input) {
 
 
 function cancelUpdateForm() {
-    alert("cancle");
+
     window.location.href = "/";
 }
 
 
 function changePassword() {
 
-    alert("change pw");
+
 
     document.getElementById("change-pw-message").innerHTML = "";
     var email = document.getElementById("email").value;
@@ -119,7 +119,7 @@ function changePassword() {
             data: newLoginData,
             success: function (result) {
                 if (result == 1) {
-
+                    alert("Password Changed Successfully...!")
                     window.location.href = "/";
                 } else {
                     document.getElementById("change-pw-message").innerHTML = "Login credentials Changing is Invalied";
@@ -132,6 +132,6 @@ function changePassword() {
 }
 
 function cancelChangePassword() {
-    alert("cancle");
+
     window.location.href = "/";
 }

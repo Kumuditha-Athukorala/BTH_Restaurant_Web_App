@@ -1,6 +1,5 @@
 function checkTableBookingForm() {
 
-    alert("booking");
 
     document.getElementById("booking-message").innerHTML = "";
 
@@ -111,15 +110,15 @@ function checkBookingTime(time) {
     today.setHours(0, 0, 0, 0);
 
     if (selected_date < today) {
-        alert("one");
+
         return false;
     } else if (selected_date > today) {
-        alert("two");
+
         return true;
     } else {
         alert("sameeeee");
         if (time == current_hour_12 || time < current_hour_12) {
-            alert("timeeeee");
+
             return false;
         } else {
             return true;
@@ -150,6 +149,6 @@ function validateEmail(mail) {
 
 
 function cancelBooking() {
-    alert("cancle");
+
     window.location.href = "/";
 }

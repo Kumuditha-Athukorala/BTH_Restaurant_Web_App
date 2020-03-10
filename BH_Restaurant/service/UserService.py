@@ -1,6 +1,7 @@
 from flask import session
 from dao.User import User
 
+
 user = User()
 class UserService:
 
@@ -8,10 +9,11 @@ class UserService:
 
         result = user.checkUserLogin(data)
         if len(result) == 1:
-            for row in result:
-                session["user"] = result[0]['first_name']
-                session["userId"] = result[0]['user_id']
-                session["email"] = result[0]['email_address']
+
+            session["user"] = result[0]['first_name']
+            session["userId"] = result[0]['user_id']
+            session["email"] = result[0]['email_address']
+
             return 1
         else:
             return 0
@@ -26,3 +28,4 @@ class UserService:
 
         result = user.updatePassword(data,id)
         return result
+

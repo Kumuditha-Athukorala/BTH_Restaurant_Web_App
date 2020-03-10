@@ -1,6 +1,6 @@
 import pymysql
 from database import Database
-from werkzeug.security import generate_password_hash, check_password_hash
+import hashlib
 
 class User:
     def __init__(self):
@@ -49,9 +49,9 @@ class User:
             print("DBBBBBBBBBBBBBBBBBBBBBBBBbb")
             print(type(result))
             print(result[0]['password'])
-            print(check_password_hash(result[0]['password'],pswd))
+            print(result[0]['password'] == hashlib.sha256(pswd.encode()).hexdigest())
 
-            checkresult = check_password_hash(result[0]['password'],pswd)
+            checkresult = result[0]['password'] == hashlib.sha256(pswd.encode()).hexdigest()
             emptyList = []
             if len(result) != 0 and checkresult:
                 return result
@@ -59,9 +59,6 @@ class User:
                 return result
             else:
                 return emptyList
-
-
-
         except:
             print("Database Error...!")
 
@@ -76,7 +73,7 @@ class User:
             userId = id
             email = data.get('username')
             password = data.get('password')
-            generatedPassword = generate_password_hash(password)
+            generatedPassword = hashlib.sha256(password.encode()).hexdigest()
             db = Database()
             cursor = db.getDatabaseConnection()
 
@@ -92,4 +89,5 @@ class User:
 
         finally:
             cursor.close()
+
 

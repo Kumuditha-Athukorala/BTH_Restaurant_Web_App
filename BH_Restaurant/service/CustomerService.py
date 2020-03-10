@@ -1,6 +1,7 @@
 
 from dao.Customer import Customer
 from service.PasswordRecoveryService import PwBackUpEmail
+import hashlib
 
 customer = Customer()
 bkp = PwBackUpEmail()
@@ -15,6 +16,7 @@ class CustomerService:
             return 0
 
     def rgisterCustomer(self,data):
+
         result = customer.saveCustomer(data)
         print(result)
         return result
@@ -44,4 +46,6 @@ class CustomerService:
         emlResponce = bkp.sendEmail(email,pw)
 
         return emlResponce
+
+
 

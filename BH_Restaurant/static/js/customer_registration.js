@@ -64,7 +64,7 @@ function checkCustomerRegistration() {
             data: regiseterData,
             success: function (result) {
                 if (result == 0) {
-                    alert('before')
+
                     registerCustomer(regiseterData);
                 } else {
                     document.getElementById("register-message").innerHTML = "Email is already existed...!";
@@ -77,7 +77,7 @@ function checkCustomerRegistration() {
 }
 
 function registerCustomer(regiseterData) {
-    alert("2222")
+
     $.ajax({
         type: "POST",
         url: "/registerCustomer",
@@ -87,6 +87,8 @@ function registerCustomer(regiseterData) {
             if (result == 'None') {
                 alert("You Have Successfully Registerd...!!!");
                 window.location.href = "/";
+            } else {
+                alert("User Registration is not Success...!");
             }
 
         }

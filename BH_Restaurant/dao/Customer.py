@@ -1,8 +1,10 @@
 import pymysql
 from database import Database
-from werkzeug.security import generate_password_hash, check_password_hash
+from service.PasswordManagingService import  PasswordED
+import hashlib
 
 database = Database()
+pwc = PasswordED()
 class Customer:
     def __init__(self):
         self.firstName = ""
@@ -41,7 +43,7 @@ class Customer:
             address = data.get('address')
             email = data.get('email')
             password = data.get('password')
-            generatedPassword = generate_password_hash(password)
+            generatedPassword = hashlib.sha256(password.encode()).hexdigest()
 
             status = "1"
 
@@ -126,3 +128,14 @@ class Customer:
             cursor.close()
             conn.close()
 
+
+import base64
+
+def encode(key, string):
+    encoded_chars = []
+    for i in range(len(string)):
+        key_c = key[i % len(key)]
+        encoded_c = chr(ord(string[i]) + ord(key_c) % 256)
+        encoded_chars.append(encoded_c)
+    encoded_string = "".join(encoded_chars)
+    return base64.urlsafe_b64encode(encoded_string)

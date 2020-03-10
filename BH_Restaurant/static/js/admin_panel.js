@@ -11,7 +11,6 @@ $(document).ready(function () {
 
 function changeCustomerStatus(id) {
 
-    alert(id);
     userData = {
         "userId": id
     }
@@ -29,11 +28,6 @@ function changeCustomerStatus(id) {
 
 
 function processOrder(purpose, orderId) {
-
-
-    alert("cancel or Process");
-    alert(purpose);
-    alert(orderId);
 
     var customerName = document.getElementById("cusName").innerHTML;
     var orderDate = document.getElementById("orderDate").innerHTML;
@@ -68,7 +62,7 @@ function processOrder(purpose, orderId) {
 
 
 function addNewCategory() {
-    alert("cat");
+
 
     document.getElementById("cat-message").innerHTML = "";
     var category = document.getElementById("category").value;
@@ -95,7 +89,7 @@ function addNewCategory() {
             data: catData,
             success: function (result) {
                 if (result == 'None') {
-
+                    alert("New Category Successfully Added...!")
                     window.location.href = "/";
                 } else {
                     document.getElementById("change-pw-message").innerHTML = "Category Adding Cancelled..!";
@@ -110,13 +104,12 @@ function addNewCategory() {
 }
 
 function cancelCat() {
-    alert("cancle");
+
     window.location.href = "/";
 
 }
 
 function checkMenuSubmission() {
-    alert("Menu");
 
     document.getElementById("menu-message").innerHTML = "";
 
@@ -155,13 +148,13 @@ function alphanumeric(input) {
 }
 
 function CheckDecimal(input) {
-    alert("priceeee");
+
     console.log(/^(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/.test(input));
     return /^(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/.test(input);
 
 }
 
 function cancelMenuItem() {
-    alert("cancle");
+
     window.location.href = "/";
 }

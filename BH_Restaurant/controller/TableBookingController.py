@@ -14,11 +14,15 @@ def tableBooking():
 
 @app.route('/booking',methods=['POST'])
 def booking():
-    print('booking')
-    postData = request.form
-    print(postData)
+    if session.get("user") is not None:
+        print('booking')
+        postData = request.form
+        print(postData)
 
-    result = tableBookingService.saveTableBookingRecord(postData)
-    print(result)
+        result = tableBookingService.saveTableBookingRecord(postData)
+        print(result)
 
-    return str(result)
+        return str(result)
+    else:
+        return render_template('login.html')
+
