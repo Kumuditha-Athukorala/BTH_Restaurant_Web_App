@@ -99,12 +99,12 @@ function sendpw(emlData) {
 
   $.ajax({
     type: "POST",
-    url: "/forgotemail",
+    url: "/forgotpassword",
     data: emlData,
     success: function (result) {
 
       if (result == '0') {
-        document.getElementById("login-message").innerHTML = "Please Check Your Registered Email..!!";
+        document.getElementById("fgpw-message").innerHTML = "Please Check Your Registered Email..!!";
 
       } else {
         document.getElementById("fgpw-message").innerHTML = "Please Enter the Registerd Email...!";

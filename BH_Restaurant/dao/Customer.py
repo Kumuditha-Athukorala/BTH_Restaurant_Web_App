@@ -36,6 +36,8 @@ class Customer:
     def saveCustomer(self,data):
 
         try:
+
+            key="SlkumatybjykkkkkhhLKI90"
             firstName = data.get('firstName')
             lastname = data.get('lastName')
             gender = data.get('gender')
@@ -43,8 +45,10 @@ class Customer:
             address = data.get('address')
             email = data.get('email')
             password = data.get('password')
-            generatedPassword = hashlib.sha256(password.encode()).hexdigest()
 
+            generatedPassword = pwc.encode(key, password)
+            print("Paswordddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd")
+            print(generatedPassword)
             status = "1"
 
             cursor = database.getDatabaseConnection()
@@ -129,13 +133,3 @@ class Customer:
             conn.close()
 
 
-import base64
-
-def encode(key, string):
-    encoded_chars = []
-    for i in range(len(string)):
-        key_c = key[i % len(key)]
-        encoded_c = chr(ord(string[i]) + ord(key_c) % 256)
-        encoded_chars.append(encoded_c)
-    encoded_string = "".join(encoded_chars)
-    return base64.urlsafe_b64encode(encoded_string)

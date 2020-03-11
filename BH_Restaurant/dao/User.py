@@ -1,7 +1,9 @@
 import pymysql
 from database import Database
 import hashlib
+from service.PasswordManagingService import PasswordED
 
+psd = PasswordED()
 class User:
     def __init__(self):
         self.firstName = ""
@@ -34,6 +36,8 @@ class User:
     def checkUserLogin(self,data):
 
         try:
+            key = "SlkumatybjykkkkkhhLKI90"
+
             database = Database()
             conn = database.commitDatabaseConnection()
             cursor = conn.cursor(pymysql.cursors.DictCursor)
@@ -47,21 +51,16 @@ class User:
             cursor.execute(query, (uname,status))
             result = cursor.fetchall()
             print("DBBBBBBBBBBBBBBBBBBBBBBBBbb")
-            print(type(result))
-            print(result[0]['password'])
-            print(result[0]['password'] == hashlib.sha256(pswd.encode()).hexdigest())
-
-            checkresult = result[0]['password'] == hashlib.sha256(pswd.encode()).hexdigest()
             emptyList = []
-            if len(result) != 0 and checkresult:
-                return result
-            elif len(result) != 0 and result[0]['password']== pswd:
-                return result
+            if len(result) != 0:
+                checkresult = result[0]['password'] == psd.encode(key, pswd)
+                if checkresult:
+                    return result
             else:
                 return emptyList
         except:
             print("Database Error...!")
-
+            return emptyList
         finally:
             cursor.close()
 
@@ -69,11 +68,11 @@ class User:
 
     def updatePassword(self, data, id):
         try:
-
+            key = "SlkumatybjykkkkkhhLKI90"
             userId = id
             email = data.get('username')
             password = data.get('password')
-            generatedPassword = hashlib.sha256(password.encode()).hexdigest()
+            generatedPassword = psd.encode(key,password)
             db = Database()
             cursor = db.getDatabaseConnection()
 

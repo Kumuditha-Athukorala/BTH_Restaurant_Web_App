@@ -76,7 +76,7 @@ def ourMenu():
     return render_template('Menu.html',data=MainCategories, Item_List = Items)
 
 
-@app.route('/forgotemail', methods=['POST'])
+@app.route('/forgotpassword', methods=['POST'])
 def forgotPassword():
 
     if (session.get("email")) is None:

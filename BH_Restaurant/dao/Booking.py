@@ -8,6 +8,7 @@ class Booking:
     def saveTableBookingRecord(self,data):
 
         try:
+            db = Database()
             firstName = data.get('firstName')
             lastname = data.get('lastName')
             phone = data.get('phone')
@@ -20,7 +21,7 @@ class Booking:
             status = "0"
 
             btime = "0"+booking_time + ":00:00"
-            cursor = database.getDatabaseConnection()
+            cursor = db.getDatabaseConnection()
             booking = Booking()
             user_id = booking.getUserId(email)
             if(len(user_id) != 0):
@@ -29,7 +30,7 @@ class Booking:
                 recordTuple = (phone, email,adult,children,booking_date,btime,comment,user_id,status,)
 
                 cursor.execute(sqlQuery, recordTuple)
-                result = database.commitDatabaseConnection().commit()
+                result = db.commitDatabaseConnection().commit()
                 print(result)
                 return result
             else:
@@ -38,12 +39,14 @@ class Booking:
         except:
             print("Database Error...!")
         finally:
-             cursor.close()
+            cursor.close()
+
 
 
     def getUserId(self,email):
 
         try:
+            database = Database()
             cursor = database.getDatabaseConnection()
             sql = "SELECT user_id FROM user WHERE email_address = %s"
 

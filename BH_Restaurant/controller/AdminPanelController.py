@@ -119,7 +119,7 @@ def newCategory():
 #
 #     return "1"
 
-@app.route('/addMenu',methods=['POST','GET'])
+@app.route('/addMenu', methods=['POST', 'GET'])
 def addMenuItem():
     if (session.get("email") is not None and session['email'] == 'kumudithaudesha@gmail.com'):
 
@@ -130,18 +130,19 @@ def addMenuItem():
 
         if 'file' not in request.files:
             flash('No File Part in Request')
-            return redirect(request.url)
+            return redirect(url_for('adminPanel'))
 
         if img_file.filename == '':
             flash('There is no selected Image')
-            return redirect(request.url)
+            return redirect(url_for('adminPanel'))
 
         if img_file and checkFileExtension(img_file.filename):
             catService.saveMenuItem(postData, encr_img)
-            return render_template('admin_panel.html')
+            flash('Menu Item Added Successfully...!')
+            return redirect(url_for('adminPanel'))
         else:
             flash('Wrong File Selection...!')
-            return redirect((request.url))
+            return redirect(url_for('adminPanel'))
 
 
 def checkFileExtension(fileName):
