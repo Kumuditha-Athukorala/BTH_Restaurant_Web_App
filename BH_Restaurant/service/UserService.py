@@ -8,7 +8,8 @@ class UserService:
     def checkUserLogin(self,data):
 
         result = user.checkUserLogin(data)
-        if len(result) == 1:
+        print(result)
+        if result is not None:
 
             session["user"] = result[0]['first_name']
             session["userId"] = result[0]['user_id']

@@ -51,16 +51,18 @@ class User:
             cursor.execute(query, (uname,status))
             result = cursor.fetchall()
             print("DBBBBBBBBBBBBBBBBBBBBBBBBbb")
+
+
+
             emptyList = []
             if len(result) != 0:
                 checkresult = result[0]['password'] == psd.encode(key, pswd)
                 if checkresult:
                     return result
             else:
-                return emptyList
+                return None
         except:
             print("Database Error...!")
-            return emptyList
         finally:
             cursor.close()
 
@@ -85,7 +87,7 @@ class User:
 
         except:
             print("Database Error...!")
-
+            return None
         finally:
             cursor.close()
 
