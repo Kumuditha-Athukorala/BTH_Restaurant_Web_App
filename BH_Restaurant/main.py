@@ -6,7 +6,7 @@ from controller import UserController,CustomerController,TableBookingController,
 
 @app.route('/')
 def index():
-    
+
     print(session.get("user"))
     return render_template('index.html',)
 
@@ -24,4 +24,4 @@ def error405(error):
 
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run()

@@ -35,7 +35,6 @@ class CustomerService:
 
     def recoverPassword(self, data):
         key="SlkumatybjykkkkkhhLKI90"
-        print("recover passsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss")
 
         result = customer.getPassword(data)
         pw = result[0]['password']

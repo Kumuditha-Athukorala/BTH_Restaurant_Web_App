@@ -1,6 +1,5 @@
 import pymysql
 from database import Database
-import hashlib
 from service.PasswordManagingService import PasswordED
 
 psd = PasswordED()
@@ -50,11 +49,7 @@ class User:
             query = "SELECT * FROM user WHERE email_address = %s and status=%s"
             cursor.execute(query, (uname,status))
             result = cursor.fetchall()
-            print("DBBBBBBBBBBBBBBBBBBBBBBBBbb")
 
-
-
-            emptyList = []
             if len(result) != 0:
                 checkresult = result[0]['password'] == psd.encode(key, pswd)
                 if checkresult:

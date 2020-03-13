@@ -1,7 +1,7 @@
 import pymysql
 from database import Database
 from service.PasswordManagingService import  PasswordED
-import hashlib
+
 
 database = Database()
 pwc = PasswordED()
@@ -48,7 +48,6 @@ class Customer:
             userType = "Customer"
 
             generatedPassword = pwc.encode(key, password)
-            print("Paswordddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd")
             print(generatedPassword)
             status = "1"
 

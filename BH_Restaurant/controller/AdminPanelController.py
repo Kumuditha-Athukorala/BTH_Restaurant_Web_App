@@ -94,7 +94,7 @@ def cancelOrder():
 
 @app.route('/addNewCategory', methods=['POST'])
 def newCategory():
-    if (session.get("email") is not None and session['email'] == 'kumudithaudesha@gmail.com'):
+    if (session.get("email") is not None and session['user_type'] == 'Admin'):
         print("cateeeee")
         postData = request.form
         print(postData)
@@ -105,19 +105,6 @@ def newCategory():
     else:
         return render_template('index.html')
 
-
-
-# @app.route('/addMenuItem', methods=['POST'])
-# def addMenu():
-#     print("adddddd")
-#
-#     postData = request.form
-#     print(postData)
-#
-#     # result = catService.saveMenuItem(postData)
-#     # print(result)
-#
-#     return "1"
 
 @app.route('/addMenu', methods=['POST', 'GET'])
 def addMenuItem():

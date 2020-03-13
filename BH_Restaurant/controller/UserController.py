@@ -77,7 +77,7 @@ def changePassword():
 
         result = userService.changePassword(postData,userId)
 
-        print("change pwwww")
+        print("change password")
         print(result)
 
         return "1"
