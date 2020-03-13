@@ -45,6 +45,7 @@ class Customer:
             address = data.get('address')
             email = data.get('email')
             password = data.get('password')
+            userType = "Customer"
 
             generatedPassword = pwc.encode(key, password)
             print("Paswordddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd")
@@ -52,8 +53,8 @@ class Customer:
             status = "1"
 
             cursor = database.getDatabaseConnection()
-            sqlQuery = "INSERT INTO user (first_name,last_name,gender,contact_number,address,email_address,password,status) VALUES (%s, %s, %s, %s, %s, %s, %s, %s )"
-            recordTuple = (firstName, lastname, gender, phone, address, email, generatedPassword, status)
+            sqlQuery = "INSERT INTO user (first_name,last_name,gender,contact_number,address,email_address,password,status, user_type) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s )"
+            recordTuple = (firstName, lastname, gender, phone, address, email, generatedPassword, status,userType)
 
             cursor.execute(sqlQuery, recordTuple)
             result = database.commitDatabaseConnection().commit()

@@ -11,6 +11,7 @@ class UserService:
         print(result)
         if result is not None:
 
+            session["user_type"] = result[0]['user_type']
             session["user"] = result[0]['first_name']
             session["userId"] = result[0]['user_id']
             session["email"] = result[0]['email_address']

@@ -21,7 +21,7 @@ emailbth = EmailBTH()
 
 @app.route('/adminpanel')
 def adminPanel():
-    if(session.get("email") is not None and session['email'] == 'kumudithaudesha@gmail.com'):
+    if(session.get("email") is not None and session['user_type'] == 'Admin'):
 
         resultAllCustomers = viewAllCustomers()
         resultAllBookings = viewAllBookings()
@@ -53,7 +53,7 @@ def viewAllBookings():
 @app.route('/changecustomerstatus', methods=['POST'])
 def changeCustomerStatus():
 
-    if (session.get("email") is not None and session['email'] == 'kumudithaudesha@gmail.com'):
+    if (session.get("email") is not None and session['user_type'] == 'Admin'):
         postData = request.form
         print(postData)
 
@@ -70,7 +70,7 @@ def changeCustomerStatus():
 @app.route('/cancel_or_process_order', methods=['POST'])
 def cancelOrder():
 
-    if (session.get("email") is not None and session['email'] == 'kumudithaudesha@gmail.com'):
+    if (session.get("email") is not None and session['user_type'] == 'Admin'):
         print("cancel_or_process_order")
         postData = request.form
         print(postData)
@@ -121,7 +121,7 @@ def newCategory():
 
 @app.route('/addMenu', methods=['POST', 'GET'])
 def addMenuItem():
-    if (session.get("email") is not None and session['email'] == 'kumudithaudesha@gmail.com'):
+    if (session.get("email") is not None and session['user_type'] == 'Admin'):
 
         print("Menu Item")
         postData = request.form
@@ -154,7 +154,7 @@ def checkFileExtension(fileName):
 
 @app.route('/allCategories',methods=['POST'])
 def allCategories():
-    if (session.get("email") is not None and session['email'] == 'kumudithaudesha@gmail.com'):
+    if (session.get("email") is not None and session['user_type'] == 'Admin'):
         resultSet = catService.getAllCtegories()
         session['Categories'] = resultSet
         print(resultSet)

@@ -17,6 +17,7 @@ def login():
 @app.route('/checklogin', methods=['POST','GET'])
 def checkUserLogin():
     if request.method == 'POST':
+        session.pop('user_type', None)
         session.pop('user', None)
         session.pop('userId', None)
         session.pop('email', None)
@@ -41,7 +42,7 @@ def profile():
 
 @app.route('/logout')
 def logout():
-
+    session.pop('user_type', None)
     session.pop('user', None)
     session.pop('userId', None)
     session.pop('email', None)
